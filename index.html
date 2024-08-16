@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="en">
+  <head>
+    <title>UPenn JISL</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link
+      rel="stylesheet"
+      href="assets/academicons-1.9.2/css/academicons.min.css"
+    />
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <!-- Header -->
+          <header id="header">
+            <a href="index.html" class="logo"><strong>Follow us</strong> on</a>
+            <ul class="icons">
+              <li>
+                <a
+                  href="https://twitter.com/antoniloq"
+                  class="icon brands fa-twitter"
+                  ><span class="label">Twitter</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/Jisl-upenn"
+                  class="icon brands fa-github"
+                  ><span class="label">GitHub</span></a
+                >
+              </li>
+              <li>
+                <a href="https://www.youtube.com/@UPenn-JISL"
+				   class="icon brands fa-youtube"
+                  ><span class="label">YouTube</span></a
+                >
+              </li>
+            </ul>
+          </header>
+
+          <!-- Banner -->
+          <section id="banner">
+            <div class="content">
+              <header>
+                <img
+                  src="images/Jisl-logo/Jisl-logo.001.png"
+                  alt="JISL Logo"
+                  width="49%"
+                />
+                <img src="images/spinning.gif" alt="Spinning" width="49%" />
+              </header>
+
+              <br />
+              <p>
+                Welcome to the website of the Janus Intelligent Systems Lab
+                (JISL) at the University of Pennsylvania! <br />
+                Our group brings expertise from the fields of robotics,
+                artificial intelligence, control theory, and computer vision to
+                the design of intelligent systems that can perceive, reason, and
+                act in complex environments. <br />
+              </p>
+
+              <p>
+                What's the story behind the name <em>Janus</em> in a robotics
+                lab? To know more, visit <a href="janus.html">this page</a>.
+              </p>
+
+              <b>Location:</b>
+              <a
+                href="https://facilities.upenn.edu/maps/locations/levine-hall-melvin-and-claire-weiss-tech-house"
+                >Levine Hall</a
+              >, Room 372.<br />
+            </div>
+          </section>
+
+          <!-- News Section -->
+          <section>
+            <header class="major">
+              <h2>News</h2>
+            </header>
+            <div class="row">
+              <div class="col-16 col-16-small">
+                <ul>
+                  <li>
+                    <font size="+0.5"
+                      ><b>August, 2024</b>. Our lab is founded!</font
+                    >
+                  </li>
+                </ul>
+                <button id="show-button">Older News</button>
+                <button id="hide-button" style="display: none">
+                  Hide Items
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <style>
+            /* Hide items beyond the first ten initially */
+            .hidden {
+              display: none;
+            }
+          </style>
+
+          <script>
+            var showButton = document.getElementById("show-button");
+            var hideButton = document.getElementById("hide-button");
+            var hiddenItems = document.querySelectorAll(".hidden");
+
+            showButton.addEventListener("click", function () {
+              for (var i = 0; i < hiddenItems.length; i++) {
+                hiddenItems[i].style.display = "list-item";
+              }
+              showButton.style.display = "none";
+              hideButton.style.display = "inline-block";
+            });
+
+            hideButton.addEventListener("click", function () {
+              for (var i = 0; i < hiddenItems.length; i++) {
+                hiddenItems[i].style.display = "none";
+              }
+              showButton.style.display = "inline-block";
+              hideButton.style.display = "none";
+            });
+          </script>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div id="sidebar">
+        <div class="inner">
+          <!-- Search -->
+          <section id="search" class="alt">
+            <form method="post" action="#">
+              <input type="text" name="query" id="query" placeholder="Search" />
+            </form>
+          </section>
+
+          <!-- Menu -->
+          <nav id="menu">
+            <header class="major">
+              <h2>Menu</h2>
+            </header>
+            <ul>
+              <li><a href="index.html">Homepage</a></li>
+              <li><a href="publications.html">Publications</a></li>
+              <li><a href="people.html">People</a></li>
+            </ul>
+          </nav>
+
+          <!-- Footer -->
+          <footer id="footer">
+            <p class="copyright">
+              &copy; Janus Intelligent Systems Lab. All rights reserved. Design:
+              <a href="https://html5up.net">HTML5 UP</a>.
+            </p>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

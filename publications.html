@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+    <title>Publications</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link
+      rel="stylesheet"
+      href="assets/academicons-1.9.2/css/academicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0px;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .section-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #ccc;
+        padding-bottom: 10px;
+      }
+      .publication {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+        padding: 15px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+      .publication img {
+        width: 170px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-right: 20px;
+        flex-shrink: 0;
+      }
+      .publication-details {
+        flex: 1;
+        position: relative;
+      }
+      .publication-title {
+        font-size: 18px;
+        margin: 0 0 5px;
+      }
+      .publication-authors,
+      .publication-venue {
+        font-size: 14px;
+        color: #555;
+        margin: 5px 0;
+      }
+      .publication-links {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .new-banner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: yellow;
+        color: red;
+        padding: 5px 10px;
+        font-size: 14px;
+        border-radius: 5px;
+        animation: flash 1.5s infinite;
+      }
+      .highlighted {
+        color: red;
+        font-weight: bold;
+      }
+      @keyframes flash {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      /* Updated Button Styles */
+      a.button {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        text-decoration: none;
+        border: none;
+        color: white;
+        text-align: center;
+        display: inline-block;
+        cursor: pointer;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        padding: 5px 10px;
+        border-radius: 10px;
+        margin: 0.3em;
+        font-size: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      a.button-paper {
+        background-color: #5dade2;
+      }
+
+      a.button-website {
+        background-color: #a569bd;
+      }
+
+      a.button-code {
+        background-color: #383838;
+      }
+
+      a.button-dataset {
+        background-color: #383838;
+      }
+
+      a.button-video {
+        background-color: grey;
+      }
+
+      a.button-blog {
+        background-color: #ed8e00;
+      }
+
+      a.button-poster {
+        background-color: #9bbb59;
+      }
+
+      a.button-talk {
+        background-color: #9bbb59;
+      }
+
+      /* Icon Styling */
+      .button i {
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <!-- Header -->
+          <header id="header">
+            <a href="index.html" class="logo"><strong>Follow us</strong> on</a>
+            <ul class="icons">
+              <li>
+                <a
+                  href="https://twitter.com/antoniloq"
+                  class="icon brands fa-twitter"
+                  ><span class="label">Twitter</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/Jisl-upenn"
+                  class="icon brands fa-github"
+                  ><span class="label">GitHub</span></a
+                >
+              </li>
+              <li>
+                <a href="https://www.youtube.com/@UPenn-JISL" class="icon brands fa-youtube"
+                  ><span class="label"></span
+                ></a>
+              </li>
+            </ul>
+          </header>
+
+          <!-- Content -->
+          <section>
+            <header class="main">
+              <h1>Publications</h1>
+            </header>
+
+            <p>
+              A complete list of publications can also be found on my
+              <a href="https://scholar.google.com/citations?user=pbmjtZsAAAAJ"
+                >Google Scholar profile</a
+              >.
+            </p>
+
+            <h2>Books</h2>
+
+            <div class="publication">
+              <img src="images/thesis_image.jpg" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Agile Autonomy: Learning High-Speed Vision-Based Flight
+                </h2>
+                <div class="publication-authors">A. Loquercio</div>
+                <div class="publication-venue">
+                  <em>Springer Tracts in Advanced Robotics, 2022</em>
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="https://link.springer.com/book/10.1007/978-3-031-27288-2"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Book</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- 
+
+                  <h2>Preprint</h2>
+                  
+                 
+                  <div class="publication">
+                      <img src="images/nature_cover.jpeg" alt="Preprint Image">
+                      <div class="publication-details">
+                          <h2 class="publication-title">Title of Preprint Paper</h2>
+                          <div class="publication-authors">Authors: Jane Doe, John Smith, Alice Brown</div>
+                          <div class="publication-venue">Venue: arXiv</div>
+                          <div class="highlighted">Oral Presentation Award</div>
+                          <div class="publication-links">
+                              <a href="link_to_paper.pdf" target="_blank" class="button button-paper"><i class="fas fa-file-text"></i> Paper</a>
+                              <a href="link_to_website" target="_blank" class="button button-website"><i class="fas fa-external-link-alt"></i> Website</a>
+                              <a href="link_to_code" target="_blank" class="button button-code"><i class="fas fa-code"></i> Code</a>
+                          </div>
+                      </div>
+                  </div>
+                -->
+
+            <h2>Publications</h2>
+
+            <div class="publication">
+              <img src="images/egopet.jpg" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  EgoPet: Egomotion and Interaction Data from an Animal's
+                  Perspective
+                </h2>
+                <div class="publication-authors">
+                  A. Bar, A. Bakhtiar, D. Tran, A. Loquercio, J. Rajasegaran, Y.
+                  LeCun, A. Globerson, T. Darrell
+                </div>
+                <div class="publication-venue">
+                  <em>European Conference on Computer Vision (ECCV), 2024</em>
+                </div>
+                <div class="new-banner">★ New</div>
+                <div class="publication-links">
+                  <a
+                    href="https://arxiv.org/abs/2404.09991"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://www.amirbar.net/egopet/"
+                    target="_blank"
+                    class="button button-website"
+                    ><i class="fas fa-external-link-alt"></i> Website</a
+                  >
+                  <a
+                    href="https://github.com/DannyTran123/egopet/"
+                    target="_blank"
+                    class="button button-code"
+                    ><i class="fas fa-code"></i> Code</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/tro23_hanover.png" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Autonomous Drone Racing: A Survey
+                </h2>
+                <div class="publication-authors">
+                  D. Hanover, A. Loquercio, L. Bauersfeld, A. Romero, R.
+                  Penicka, Y. Song, G. Cioffi, E. Kaufmann, D. Scaramuzza
+                </div>
+                <div class="publication-venue">
+                  <em>IEEE Transactions of Robotics (T-RO), 2024</em>
+                </div>
+                <div class="new-banner">★ New</div>
+                <div class="publication-links">
+                  <a
+                    href="https://arxiv.org/pdf/2301.01755.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/tarf.gif" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Tactile-Augmented Radiance Fields
+                </h2>
+                <div class="publication-authors">
+                  Y. Dou, F. Yang, Y. Liu, A. Loquercio, A. Owens
+                </div>
+                <div class="publication-venue">
+                  <em
+                    >IEEE Conference on Computer Vision and Pattern Recognition
+                    (CVPR), 2024</em
+                  >
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="https://arxiv.org/abs/2405.04534"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://dou-yiming.github.io/TaRF/"
+                    target="_blank"
+                    class="button button-website"
+                    ><i class="fas fa-external-link-alt"></i> Website</a
+                  >
+                  <a
+                    href="https://github.com/Dou-Yiming/TaRF"
+                    target="_blank"
+                    class="button button-code"
+                    ><i class="fas fa-code"></i> Code</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/manipulator-tail.png" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Manipulator as a Tail: Promoting Dynamic Stability for Legged
+                  Locomotion
+                </h2>
+                <div class="publication-authors">
+                  H. Huang, A. Loquercio, A. Kumar, N. Thakkar, K. Goldberg, J.
+                  Malik
+                </div>
+                <div class="publication-venue">
+                  <em
+                    >International Conference on Robotics and Automation (ICRA),
+                    2024</em
+                  >
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="https://arxiv.org/abs/2305.01648"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://sites.google.com/view/chimeralocomotion/home?authuser=1"
+                    target="_blank"
+                    class="button button-website"
+                    ><i class="fas fa-external-link-alt"></i> Website</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/conformal-pd.png" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Conformal Policy Learning for Sensorimotor Control Under
+                  Distribution Shifts
+                </h2>
+                <div class="publication-authors">
+                  H. Huang, S. Sharma, A. Loquercio, A. Angelopoulos, K.
+                  Goldberg, J. Malik
+                </div>
+                <div class="publication-venue">
+                  <em
+                    >International Conference on Robotics and Automation (ICRA),
+                    2024</em
+                  >
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="https://arxiv.org/pdf/2311.01457.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img
+                src="images/vision-based-pursuit.png"
+                alt="Publication Image"
+              />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Learning Vision-Based Pursuit-Evasion Robot Policies
+                </h2>
+                <div class="publication-authors">
+                  A. Bajcsy*, A. Loquercio*, A. Kumar, J. Malik
+                </div>
+                <div class="publication-venue">
+                  <em
+                    >International Conference on Robotics and Automation (ICRA),
+                    2024</em
+                  >
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="https://arxiv.org/pdf/2308.16185.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://abajcsy.github.io/vision-based-pursuit/"
+                    target="_blank"
+                    class="button button-website"
+                    ><i class="fas fa-external-link-alt"></i> Website</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/nature_cover.jpeg" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Champion-Level Drone Racing Using Deep Reinforcement Learning
+                </h2>
+                <div class="publication-authors">
+                  E. Kaufmann, L. Bauersfeld, A. Loquercio, M. Mueller, V.
+                  Koltun, D. Scaramuzza
+                </div>
+                <div class="publication-venue"><em>Nature, 2023</em></div>
+                <div class="highlighted">Featured on the cover of Nature!</div>
+                <div class="publication-links">
+                  <a
+                    href="https://www.nature.com/articles/s41586-023-06419-4.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://youtu.be/fBiataDpGIo?si=L4AobOw1II7sitBl"
+                    target="_blank"
+                    class="button button-video"
+                    ><i class="fas fa-video"></i> Video</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/icra23_loquercio.png" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Learning Visual Locomotion with Cross-Modal Supervision
+                </h2>
+                <div class="publication-authors">
+                  A. Loquercio, A. Kumar, J. Malik
+                </div>
+                <div class="publication-venue">
+                  <em
+                    >International Conference on Robotics and Automation (ICRA),
+                    2023</em
+                  >
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="https://antonilo.github.io/vision_locomotion/pdf/manuscript.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://antonilo.github.io/vision_locomotion/"
+                    target="_blank"
+                    class="button button-code"
+                    ><i class="fas fa-code"></i> Code</a
+                  >
+                  <a
+                    href="https://youtu.be/d7I34YIdMdk"
+                    target="_blank"
+                    class="button button-video"
+                    ><i class="fas fa-video"></i> Video Pitch</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/icra23_wuest.png" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Training Efficient Controllers via Analytic Policy Gradient
+                </h2>
+                <div class="publication-authors">
+                  N. Wiedemann, V. Wüest, A. Loquercio, M. Müller, D. Floreano,
+                  D. Scaramuzza
+                </div>
+                <div class="publication-venue">
+                  <em
+                    >International Conference on Robotics and Automation (ICRA),
+                    2023</em
+                  >
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="https://arxiv.org/pdf/2209.13052.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://github.com/lis-epfl/apg_trajectory_tracking"
+                    target="_blank"
+                    class="button button-code"
+                    ><i class="fas fa-code"></i> Code</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/icra23_zhang.png" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  A Zero-Shot Adaptive Quadcopter Controller
+                </h2>
+                <div class="publication-authors">
+                  D. Zhang, A. Loquercio, X. Wu, A. Kumar, J. Malik, M. W.
+                  Mueller
+                </div>
+                <div class="publication-venue">
+                  <em
+                    >International Conference on Robotics and Automation (ICRA),
+                    2023</em
+                  >
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="https://arxiv.org/pdf/2209.09232.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://dz298.github.io/universal-drone-controller/"
+                    target="_blank"
+                    class="button button-website"
+                    ><i class="fas fa-external-link-alt"></i> Website</a
+                  >
+                  <a
+                    href="https://youtu.be/3yQrDML5aWs"
+                    target="_blank"
+                    class="button button-video"
+                    ><i class="fas fa-video"></i> YouTube</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img
+                src="images/science_agilicious.png"
+                alt="Publication Image"
+              />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Agilicious: Open-source and Open-hardware Agile Quadrotor for
+                  Vision-Based Flight
+                </h2>
+                <div class="publication-authors">
+                  P. Foehn, E. Kaufmann, A. Romero, R. Penicka, S. Sun, L.
+                  Bauersfeld, T. Laengle, G. Cioffi, Y. Song, A. Loquercio, D.
+                  Scaramuzza
+                </div>
+                <div class="publication-venue">
+                  <em>Science Robotics, 2022</em>
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="https://www.science.org/doi/epdf/10.1126/scirobotics.abl6259"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://github.com/uzh-rpg/agilicious"
+                    target="_blank"
+                    class="button button-code"
+                    ><i class="fas fa-code"></i> Code</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img
+                src="images/PlosOne22_Pfeiffer.jpg"
+                alt="Publication Image"
+              />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Visual Attention Prediction Improves Performance of Autonomous
+                  Drone Racing Agents
+                </h2>
+                <div class="publication-authors">
+                  C. Pfeiffer, S. Wengler, A. Loquercio, D. Scaramuzza
+                </div>
+                <div class="publication-venue">
+                  <em>PLOS ONE Vol. 17, Issue 3, 2022</em>
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="https://rpg.ifi.uzh.ch/docs/PlosOne22_Pfeiffer.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://osf.io/uabx4/"
+                    target="_blank"
+                    class="button button-dataset"
+                    ><i class="fas fa-database"></i> Dataset</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/IROS21_Loquercio.png" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  AutoTune: Controller Tuning for High-Speed Flight
+                </h2>
+                <div class="publication-authors">
+                  A. Loquercio*, A. Saviolo*, D. Scaramuzza
+                </div>
+                <div class="publication-venue">
+                  <em
+                    >IEEE Robotics and Automation Letters (RA-L) and ICRA,
+                    2022</em
+                  >
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="https://rpg.ifi.uzh.ch/docs/RAL21_Saviolo_Loquercio_AutoTune.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/science_agile.gif" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Learning High-Speed Flight in the Wild
+                </h2>
+                <div class="publication-authors">
+                  A. Loquercio, E. Kaufmann, R. Ranftl, M. Mueller, V. Koltun,
+                  D. Scaramuzza
+                </div>
+                <div class="publication-venue">
+                  <em>Science Robotics, 2021</em>
+                </div>
+                <div class="highlighted">Fontier of Science Award, 2023</div>
+                <div class="publication-links">
+                  <a
+                    href="http://rpg.ifi.uzh.ch/docs/Loquercio21_Science.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://github.com/uzh-rpg/agile_autonomy"
+                    target="_blank"
+                    class="button button-code"
+                    ><i class="fas fa-code"></i> Code and Datasets</a
+                  >
+                  <a
+                    href="https://youtu.be/m89bNn6RFoQ"
+                    target="_blank"
+                    class="button button-video"
+                    ><i class="fas fa-video"></i> Video</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/barrell.jpeg" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Agile Autonomy: High-Speed Flight with On-Board Sensing and
+                  Computing
+                </h2>
+                <div class="publication-authors">
+                  A. Loquercio, D. Scaramuzza
+                </div>
+                <div class="publication-venue">
+                  <em
+                    >Conference on Robotics and Intelligent Machines (I-RIM3D),
+                    2020</em
+                  >
+                </div>
+                <div class="highlighted">Best Paper Award Finalist!</div>
+                <div class="publication-links">
+                  <a
+                    href="https://i-rim.it/wp-content/uploads/2020/12/I-RIM_2020_paper_60.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://youtu.be/c8v2BcpgtzY"
+                    target="_blank"
+                    class="button button-video"
+                    ><i class="fas fa-video"></i> Video Pitch</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img
+                src="http://rpg.ifi.uzh.ch/img/papers/Neurips2020_Milano.png"
+                alt="Publication Image"
+              />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Primal-Dual Mesh Convolutional Neural Networks
+                </h2>
+                <div class="publication-authors">
+                  F. Milano, A. Loquercio, A. Rosinol, D. Scaramuzza, L. Carlone
+                </div>
+                <div class="publication-venue">
+                  <em
+                    >Conference on Neural Information Processing Systems
+                    (NeurIPS), 2020</em
+                  >
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="http://rpg.ifi.uzh.ch/docs/NeurIPS20_Milano.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://github.com/MIT-SPARK/PD-MeshNet"
+                    target="_blank"
+                    class="button button-code"
+                    ><i class="fas fa-code"></i> Code</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/flightmare.png" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Flightmare: A Flexible Quadrotor Simulator
+                </h2>
+                <div class="publication-authors">
+                  Y. Song, S. Naji, E. Kaufmann, A. Loquercio, D. Scaramuzza
+                </div>
+                <div class="publication-venue">
+                  <em>Conference on Robotic Learning (CoRL), 2020</em>
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="http://rpg.ifi.uzh.ch/docs/Arxiv20Flightmare_Yunlong.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://youtu.be/m9Mx1BCNGFU"
+                    target="_blank"
+                    class="button button-video"
+                    ><i class="fas fa-video"></i> Video</a
+                  >
+                  <a
+                    href="https://uzh-rpg.github.io/flightmare/"
+                    target="_blank"
+                    class="button button-website"
+                    ><i class="fas fa-external-link-alt"></i> Website</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img
+                src="images/Arxiv20_Messikommer_thumb.png"
+                alt="Publication Image"
+              />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Event-based Asynchronous Sparse Convolutional Networks
+                </h2>
+                <div class="publication-authors">
+                  N. Messikommer, D. Gehrig, A. Loquercio, D. Scaramuzza
+                </div>
+                <div class="publication-venue">
+                  <em>European Conference on Computer Vision (ECCV), 2020</em>
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="http://rpg.ifi.uzh.ch/docs/Arxiv20_Messikommer.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://youtu.be/g_I5k_QFQJA"
+                    target="_blank"
+                    class="button button-video"
+                    ><i class="fas fa-video"></i> Video</a
+                  >
+                  <a
+                    href="https://github.com/uzh-rpg/rpg_asynet"
+                    target="_blank"
+                    class="button button-code"
+                    ><i class="fas fa-code"></i> Code</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/drone_acrobatics.png" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">Deep Drone Acrobatics</h2>
+                <div class="publication-authors">
+                  E. Kaufmann*, A. Loquercio*, R. Ranftl, M. Mueller, V. Koltun,
+                  D. Scaramuzza
+                </div>
+                <div class="publication-venue">
+                  <em>Robotics, Science, and Systems (RSS), 2020</em>
+                </div>
+                <div class="highlighted">Best Paper Award Finalist!</div>
+                <div class="publication-links">
+                  <a
+                    href="http://rpg.ifi.uzh.ch/docs/RSS20_Kaufmann.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://github.com/uzh-rpg/deep_drone_acrobatics"
+                    target="_blank"
+                    class="button button-code"
+                    ><i class="fas fa-code"></i> Code</a
+                  >
+                  <a
+                    href="https://youtu.be/2N_wKXQ6MXA"
+                    target="_blank"
+                    class="button button-video"
+                    ><i class="fas fa-video"></i> Video</a
+                  >
+                  <a
+                    href="https://sim2realai.github.io/deep-drone-acrobatics-sim2real/"
+                    target="_blank"
+                    class="button button-website"
+                    ><i class="fas fa-external-link-alt"></i> Blog Post</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/ICCV19_Gehrig.png" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  End-to-End Learning of Representations for Asynchronous
+                  Event-Based Data
+                </h2>
+                <div class="publication-authors">
+                  D. Gehrig, A. Loquercio, K.G. Derpanis, D. Scaramuzza
+                </div>
+                <div class="publication-venue">
+                  <em
+                    >IEEE International Conference on Computer Vision (ICCV),
+                    2019</em
+                  >
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="http://rpg.ifi.uzh.ch/docs/ICCV19_Gehrig.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://github.com/uzh-rpg/rpg_event_representation_learning"
+                    target="_blank"
+                    class="button button-code"
+                    ><i class="fas fa-code"></i> Code</a
+                  >
+                  <a
+                    href="https://youtu.be/bQtSx59GXRY"
+                    target="_blank"
+                    class="button button-video"
+                    ><i class="fas fa-video"></i> Video</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/IROS20_Loquercio.png" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Learning Depth with Very Sparse Supervision
+                </h2>
+                <div class="publication-authors">
+                  A. Loquercio, A. Dosovitskiy, D. Scaramuzza
+                </div>
+                <div class="publication-venue">
+                  <em
+                    >IEEE Robotics and Automation Letters (RA-L) and IROS,
+                    2020</em
+                  >
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="http://rpg.ifi.uzh.ch/docs/IROS20_Loquercio.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/deep_drone_racing.jpg" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Deep Drone Racing: From Simulation to Reality with Domain
+                  Randomization
+                </h2>
+                <div class="publication-authors">
+                  A. Loquercio*, E. Kaufmann*, R. Ranftl, A. Dosovitskiy, V.
+                  Koltun, D. Scaramuzza
+                </div>
+                <div class="publication-venue">
+                  <em>IEEE Transactions on Robotics (T-RO), 2020</em>
+                </div>
+                <div class="highlighted">
+                  T-RO Best Paper Award Honorable Mention!
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="http://rpg.ifi.uzh.ch/docs/TRO19_Loquercio.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://github.com/uzh-rpg/sim2real_drone_racing"
+                    target="_blank"
+                    class="button button-code"
+                    ><i class="fas fa-code"></i> Code</a
+                  >
+                  <a
+                    href="https://youtu.be/vdxB89lgZhQ"
+                    target="_blank"
+                    class="button button-video"
+                    ><i class="fas fa-video"></i> Video</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img
+                src="images/general_framework_RAL20.png"
+                alt="Publication Image"
+              />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  A General Framework for Uncertainty Estimation in Deep
+                  Learning
+                </h2>
+                <div class="publication-authors">
+                  A. Loquercio*, M. Segu*, D. Scaramuzza
+                </div>
+                <div class="publication-venue">
+                  <em
+                    >IEEE Robotics and Automation Letters (RA-L) and ICRA,
+                    2020</em
+                  >
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="http://rpg.ifi.uzh.ch/docs/RAL20_Loquercio.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://youtu.be/X7n-bRS5vSM"
+                    target="_blank"
+                    class="button button-video"
+                    ><i class="fas fa-video"></i> Video</a
+                  >
+                  <a
+                    href="https://youtu.be/HZOxLgsk8E0"
+                    target="_blank"
+                    class="button button-video"
+                    ><i class="fas fa-video"></i> ICRA2020 Pitch Video</a
+                  >
+                  <a
+                    href="https://tinyurl.com/v3jb64k"
+                    target="_blank"
+                    class="button button-code"
+                    ><i class="fas fa-code"></i> Code</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/loquerciocvpr2019.png" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Unsupervised Moving Object Detection via Contextual
+                  Information Separation
+                </h2>
+                <div class="publication-authors">
+                  Y. Yang*, A. Loquercio*, D. Scaramuzza, S. Soatto
+                </div>
+                <div class="publication-venue">
+                  <em
+                    >IEEE Conference on Computer Vision and Pattern Recognition
+                    (CVPR), 2019</em
+                  >
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="https://arxiv.org/pdf/1901.03360.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://github.com/antonilo/unsupervised_detection"
+                    target="_blank"
+                    class="button button-code"
+                    ><i class="fas fa-code"></i> Code</a
+                  >
+                  <a
+                    href="https://youtu.be/01vClielQBw"
+                    target="_blank"
+                    class="button button-video"
+                    ><i class="fas fa-video"></i> Video</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/deep_drone_racing.jpg" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Deep Drone Racing: Learning Agile Flight in Dynamic
+                  Environments
+                </h2>
+                <div class="publication-authors">
+                  E. Kaufmann*, A. Loquercio*, R. Ranftl, A. Dosovitskiy, V.
+                  Koltun, D. Scaramuzza
+                </div>
+                <div class="publication-venue">
+                  <em>Conference on Robotic Learning (CoRL), 2018</em>
+                </div>
+                <div class="highlighted">Best Systems Paper Award!</div>
+                <div class="publication-links">
+                  <a
+                    href="https://arxiv.org/pdf/1806.08548.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://github.com/uzh-rpg/sim2real_drone_racing"
+                    target="_blank"
+                    class="button button-code"
+                    ><i class="fas fa-code"></i> Code</a
+                  >
+                  <a
+                    href="https://youtu.be/8RILnqPxo1s"
+                    target="_blank"
+                    class="button button-video"
+                    ><i class="fas fa-video"></i> Video</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/Iot_nano_dronet.jpg" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  A 64mW DNN-based Visual Navigation Engine for Autonomous
+                  Nano-Drones
+                </h2>
+                <div class="publication-authors">
+                  D. Palossi, A. Loquercio, F. Conti, E. Flamand, D. Scaramuzza,
+                  L. Benini
+                </div>
+                <div class="publication-venue">
+                  <em>IEEE Internet of Things (IoT), 2019</em>
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="http://rpg.ifi.uzh.ch/docs/IoT19_Palossi.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://github.com/pulp-platform/pulp-dronet"
+                    target="_blank"
+                    class="button button-code"
+                    ><i class="fas fa-code"></i> Code</a
+                  >
+                  <a
+                    href="https://youtu.be/57Vy5cSvnaA"
+                    target="_blank"
+                    class="button button-video"
+                    ><i class="fas fa-video"></i> Video</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/CVPR18_Maqueda.png" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Event-based Vision Meets Deep Learning on Steering Prediction
+                  for Self-driving Cars
+                </h2>
+                <div class="publication-authors">
+                  A. Maqueda, A. Loquercio, G. Gallego, N. Garcia, D. Scaramuzza
+                </div>
+                <div class="publication-venue">
+                  <em
+                    >IEEE Conference on Computer Vision and Pattern Recognition
+                    (CVPR), 2018</em
+                  >
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="https://www.ifi.uzh.ch/dam/jcr:375abad1-4631-4c8e-9982-8a75068c642b/CVPR18_Maqueda.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://youtu.be/_r_bsjkJTHA"
+                    target="_blank"
+                    class="button button-video"
+                    ><i class="fas fa-video"></i> Video</a
+                  >
+                  <a
+                    href="https://github.com/uzh-rpg/cvpr18_event_steering_angle"
+                    target="_blank"
+                    class="button button-code"
+                    ><i class="fas fa-code"></i> Code and Datasets</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img
+                src="images/RAL18_Loquercio_dronet.jpg"
+                alt="Publication Image"
+              />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  DroNet: Learning to Fly by Driving
+                </h2>
+                <div class="publication-authors">
+                  A. Loquercio, A. Maqueda, C. del-Blanco, D. Scaramuzza
+                </div>
+                <div class="publication-venue">
+                  <em
+                    >IEEE Robotics and Automation Letters (RA-L) and ICRA,
+                    2018</em
+                  >
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="http://rpg.ifi.uzh.ch/docs/RAL18_Loquercio.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="https://github.com/uzh-rpg/rpg_public_dronet"
+                    target="_blank"
+                    class="button button-code"
+                    ><i class="fas fa-code"></i> Code</a
+                  >
+                  <a
+                    href="https://youtu.be/ow7aw9H4BcA"
+                    target="_blank"
+                    class="button button-video"
+                    ><i class="fas fa-video"></i> Video</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/BMVC17_Ye.png" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Place Recognition in Semi-Dense Maps: Geometric and
+                  Learning-Based Approaches
+                </h2>
+                <div class="publication-authors">
+                  Y. Ye, T. Cieslewski, A. Loquercio, D. Scaramuzza
+                </div>
+                <div class="publication-venue">
+                  <em>British Machine Vision Conference (BMVC), 2017</em>
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="http://rpg.ifi.uzh.ch/docs/BMVC17_Ye.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                  <a
+                    href="http://rpg.ifi.uzh.ch/docs/BMVC17_Ye_Poster.pdf"
+                    target="_blank"
+                    class="button button-poster"
+                    ><i class="fas fa-file-image"></i> Poster</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="publication">
+              <img src="images/ICRA17_loquercio.png" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Efficient Descriptor Learning for Large Scale Localization
+                </h2>
+                <div class="publication-authors">
+                  A. Loquercio, M. Dymczyk, B. Zeisl, S. Lynen, I.
+                  Gilitschenski, R. Siegwart
+                </div>
+                <div class="publication-venue">
+                  <em
+                    >IEEE International Conference on Robotics and Automation
+                    (ICRA), 2017</em
+                  >
+                </div>
+                <div class="publication-links">
+                  <a
+                    href="https://ieeexplore.ieee.org/document/7989359"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Paper</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <h2>PhD Thesis</h2>
+            <div class="publication">
+              <img src="images/thesis_image.jpg" alt="Publication Image" />
+              <div class="publication-details">
+                <h2 class="publication-title">
+                  Agile Autonomy: Learning High-Speed Vision-Based Flight
+                </h2>
+                <div class="publication-authors">A. Loquercio</div>
+                <div class="publication-venue">
+                  <em>PhD Thesis, University of Zurich, 2021</em>
+                </div>
+                <div class="highlighted">Georges Giralt PhD Award, 2022</div>
+                <div class="publication-links">
+                  <a
+                    href="http://rpg.ifi.uzh.ch/docs/thesis_loquercio.pdf"
+                    target="_blank"
+                    class="button button-paper"
+                    ><i class="fas fa-file-text"></i> Thesis</a
+                  >
+                  <a
+                    href="https://youtu.be/_zuSEDcrLHc"
+                    target="_blank"
+                    class="button button-video"
+                    ><i class="fas fa-video"></i> Video of Defense</a
+                  >
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div id="sidebar">
+        <div class="inner">
+          <!-- Search -->
+          <section id="search" class="alt">
+            <form method="post" action="#">
+              <input type="text" name="query" id="query" placeholder="Search" />
+            </form>
+          </section>
+
+          <!-- Menu -->
+          <nav id="menu">
+            <header class="major">
+              <h2>Menu</h2>
+            </header>
+            <ul>
+              <li><a href="index.html">Homepage</a></li>
+              <li><a href="publications.html">Publications</a></li>
+              <li><a href="people.html">People</a></li>
+            </ul>
+          </nav>
+
+          <!-- Footer -->
+          <footer id="footer">
+            <p class="copyright">
+              &copy; Janus Intelligent Systems Lab. All rights reserved. Design:
+              <a href="https://html5up.net">HTML5 UP</a>.
+            </p>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
