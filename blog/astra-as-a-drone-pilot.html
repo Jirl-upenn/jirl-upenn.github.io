@@ -130,16 +130,23 @@
 							<strong>Cost:</strong> ~$5.
 						</p>
 
-						<p>
-							Add video.
-						</p>
+						<figure style="margin-bottom: 1.5em;">
+							<video
+								src="media/astra-as-a-drone-pilot/videos/oct2_ft_factory_1.mp4"
+								controls
+								muted
+								playsinline
+								preload="metadata"
+								style="display: block; width: 70%; margin: 0 auto;"
+							></video>
+						</figure>
 
 						<h3>Finding a rusted pillar on a bridge</h3>
 
 						<p>
 							To make this task a little spicier, we made the bridge perfectly symmetrical and
 							initialized the agent in the center. However, we gave it a little more semantic
-							information: in the prompt, we said that the sun is setting in the west and the ruster
+							information: in the prompt, we said that the sun is setting in the west and the rusted
 							pillar was on the east side of the bridge.
 						</p>
 
@@ -148,6 +155,17 @@
 							<strong>Time to completion:</strong> 16 seconds.<br />
 							<strong>Cost:</strong> ~$1.
 						</p>
+
+						<figure style="margin-bottom: 1.5em;">
+							<video
+								src="media/astra-as-a-drone-pilot/videos/oct2_ft_bridge_1.mp4"
+								controls
+								muted
+								playsinline
+								preload="metadata"
+								style="display: block; width: 70%; margin: 0 auto;"
+							></video>
+						</figure>
 
 						<p>
 							Interestingly, the robot goes directly to the correct side of the bridge.
@@ -163,6 +181,17 @@
 							<strong>Time to completion:</strong> 24 seconds.<br />
 							<strong>Cost:</strong> ~$3.
 						</p>
+
+						<figure style="margin-bottom: 1.5em;">
+							<video
+								src="media/astra-as-a-drone-pilot/videos/oct2_ft_apocalypse_1.mp4"
+								controls
+								muted
+								playsinline
+								preload="metadata"
+								style="display: block; width: 70%; margin: 0 auto;"
+							></video>
+						</figure>
 
 						<p>
 							The strategy selected for exploration is quite interesting: start by circling the
@@ -191,10 +220,27 @@
 							humans are present in the building. This task is inspired by experiments in behavioral
 							science used to evaluate “latent [spatial] learning” in children, and commonly used to
 							benchmark autonomous navigation agents. Being successful requires exploration and
-							spatial memory of the environment. We perform the test as follows. We place 6 humans in
+							spatial memory of the environment.
+						</p>
+
+						<figure style="margin-bottom: 1.5em;">
+							<img
+								src="media/astra-as-a-drone-pilot/distinct_characters_apocalypse_exploration.png"
+								alt="Figure showing the six humans Astra encounters, each with distinctive features"
+								class="image fit"
+								style="width: 70%; margin: 0 auto;"
+							/>
+							<figcaption style="text-align: center; margin-top: 0.25em;">
+								<b>Figure 2</b>. The six humans Astra encounters bear distinctive features.
+							</figcaption>
+						</figure>
+
+						<p>
+							We perform the test as follows. We place 6 humans in
 							a three-story building, with two humans per floor. All humans have distinctive features
 							(see Fig. X). In the search phase, we ask the agent to find the doctor.
 						</p>
+
 
 						<p>
 							To make things a little faster (and save some $), we increase the lateral and vertical
@@ -207,6 +253,17 @@
 							<strong>Time to completion:</strong> 47 seconds.<br />
 							<strong>Cost:</strong> X$.
 						</p>
+
+						<figure style="margin-bottom: 1.5em;">
+							<video
+								src="media/astra-as-a-drone-pilot/videos/oct11_ft_apocalypse_clip_exploration.mp4"
+								controls
+								muted
+								playsinline
+								preload="metadata"
+								style="display: block; width: 70%; margin: 0 auto;"
+							></video>
+						</figure>
 						
 						<p>
 							The agent has explored the building completely (as far as we can
@@ -230,6 +287,17 @@
 							<strong>Time to completion:</strong> 12 seconds.<br />
 							<strong>Cost:</strong> X$.
 						</p>
+
+						<figure style="margin-bottom: 1.5em;">
+							<video
+								src="media/astra-as-a-drone-pilot/videos/oct11_ft_apocalypse_clip_search.mp4"
+								controls
+								muted
+								playsinline
+								preload="metadata"
+								style="display: block; width: 70%; margin: 0 auto;"
+							></video>
+						</figure>
 
 						<p>
 							It is worth noting
@@ -258,6 +326,44 @@
 							<strong>Cost:</strong> X$.
 						</p>
 
+						<figure style="margin-bottom: 1.5em;">
+							<div style="display: flex; gap: 0.5em;">
+								<div style="flex: 1; min-width: 0; text-align: center;">
+									<video
+										src="media/astra-as-a-drone-pilot/videos/multi_agent/agent_1/ep_00/fpv.mp4"
+										controls
+										muted
+										playsinline
+										preload="metadata"
+										style="display: block; width: 100%;"
+									></video>
+									<span style="font-size: 0.9em;">Agent 1</span>
+								</div>
+								<div style="flex: 1; min-width: 0; text-align: center;">
+									<video
+										src="media/astra-as-a-drone-pilot/videos/multi_agent/agent_2/ep_00/fpv.mp4"
+										controls
+										muted
+										playsinline
+										preload="metadata"
+										style="display: block; width: 100%;"
+									></video>
+									<span style="font-size: 0.9em;">Agent 2</span>
+								</div>
+								<div style="flex: 1; min-width: 0; text-align: center;">
+									<video
+										src="media/astra-as-a-drone-pilot/videos/multi_agent/agent_3/ep_00/fpv.mp4"
+										controls
+										muted
+										playsinline
+										preload="metadata"
+										style="display: block; width: 100%;"
+									></video>
+									<span style="font-size: 0.9em;">Agent 3</span>
+								</div>
+							</div>
+						</figure>
+
 						<p>
 							As expected, “Swarming” the building results in
 							faster exploration. This is because the agents explore different parts of the building, albeit unevenly
@@ -284,6 +390,44 @@
 							(simulation is stopped after one agent issues a complete command).<br />
 							<strong>Cost:</strong> X$.
 						</p>
+
+						<figure style="margin-bottom: 1.5em;">
+							<div style="display: flex; gap: 0.5em;">
+								<div style="flex: 1; min-width: 0; text-align: center;">
+									<video
+										src="media/astra-as-a-drone-pilot/videos/multi_agent/agent_1/ep_01/fpv.mp4"
+										controls
+										muted
+										playsinline
+										preload="metadata"
+										style="display: block; width: 100%;"
+									></video>
+									<span style="font-size: 0.9em;">Agent 1</span>
+								</div>
+								<div style="flex: 1; min-width: 0; text-align: center;">
+									<video
+										src="media/astra-as-a-drone-pilot/videos/multi_agent/agent_2/ep_01/fpv.mp4"
+										controls
+										muted
+										playsinline
+										preload="metadata"
+										style="display: block; width: 100%;"
+									></video>
+									<span style="font-size: 0.9em;">Agent 2</span>
+								</div>
+								<div style="flex: 1; min-width: 0; text-align: center;">
+									<video
+										src="media/astra-as-a-drone-pilot/videos/multi_agent/agent_3/ep_01/fpv.mp4"
+										controls
+										muted
+										playsinline
+										preload="metadata"
+										style="display: block; width: 100%;"
+									></video>
+									<span style="font-size: 0.9em;">Agent 3</span>
+								</div>
+							</div>
+						</figure>
 
 						<p>
 							The results of this experiment are very intriguing. Agent 3 is the first to reach the
