@@ -458,6 +458,88 @@
 							journal).
 						</p>
 
+						<figure style="margin-bottom: 1.5em;">
+							<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5em;">
+								<div style="min-width: 0; text-align: center;">
+									<video
+										src="media/astra-as-a-drone-pilot/videos/astra_ft_racing_ep0.mp4"
+										controls
+										muted
+										playsinline
+										preload="metadata"
+										style="display: block; width: 100%;"
+									></video>
+									<span style="font-size: 0.9em;">GPT-6 Astra (ep 0)</span>
+								</div>
+								<div style="min-width: 0; text-align: center;">
+									<video
+										src="media/astra-as-a-drone-pilot/videos/sep22_ft_gpt6_luna_ep0.mp4"
+										controls
+										muted
+										playsinline
+										preload="metadata"
+										style="display: block; width: 100%;"
+									></video>
+									<span style="font-size: 0.9em;">GPT-6 Luna (ep 0)</span>
+								</div>
+								<div style="min-width: 0; text-align: center;">
+									<video
+										src="media/astra-as-a-drone-pilot/videos/sep22_ft_gpt6_sol_ep0.mp4"
+										controls
+										muted
+										playsinline
+										preload="metadata"
+										style="display: block; width: 100%;"
+									></video>
+									<span style="font-size: 0.9em;">GPT-6 Sol (ep 0)</span>
+								</div>
+								<div style="min-width: 0; text-align: center;">
+									<video
+										src="media/astra-as-a-drone-pilot/videos/sep23_ft_gpt5-6_luna_ep0.mp4"
+										controls
+										muted
+										playsinline
+										preload="metadata"
+										style="display: block; width: 100%;"
+									></video>
+									<span style="font-size: 0.9em;">GPT-5.6 Luna (ep 0)</span>
+								</div>
+								<div style="min-width: 0; text-align: center; grid-column: 2;">
+									<video
+										src="media/astra-as-a-drone-pilot/videos/sep22_ft_gpt6_luna_ep4.mp4"
+										controls
+										muted
+										playsinline
+										preload="metadata"
+										style="display: block; width: 100%;"
+									></video>
+									<span style="font-size: 0.9em;">GPT-6 Luna (ep 4)</span>
+								</div>
+								<div style="min-width: 0; text-align: center;">
+									<video
+										src="media/astra-as-a-drone-pilot/videos/sep22_ft_gpt6_sol_ep4.mp4"
+										controls
+										muted
+										playsinline
+										preload="metadata"
+										style="display: block; width: 100%;"
+									></video>
+									<span style="font-size: 0.9em;">GPT-6 Sol (ep 4)</span>
+								</div>
+								<div style="min-width: 0; text-align: center;">
+									<video
+										src="media/astra-as-a-drone-pilot/videos/sep23_ft_gpt5-6_luna_ep4.mp4"
+										controls
+										muted
+										playsinline
+										preload="metadata"
+										style="display: block; width: 100%;"
+									></video>
+									<span style="font-size: 0.9em;">GPT-5.6 Luna (ep 4)</span>
+								</div>
+							</div>
+						</figure>
+
 						<p>
 							The results clearly show that prior models or cheaper concurrent models struggle
 							significantly with spatial reasoning, even in this simple waypoint navigation task.
@@ -490,7 +572,7 @@
 								style="width: 70%; margin: 0 auto;"
 							/>
 							<figcaption style="text-align: center; margin-top: 0.25em;">
-								<b>Figure 2</b>. Attitude-control (ATTI) scheme.
+								<b>Figure 3</b>. Attitude-control (ATTI) scheme.
 							</figcaption>
 						</figure>
 
@@ -516,6 +598,76 @@
 							<strong>Result:</strong> Failure.<br />
 							<strong>Cost:</strong> X$.
 						</p>
+
+						<figure style="margin-bottom: 1.5em;">
+							<img
+								src="media/astra-as-a-drone-pilot/ctatt_icl_trajectories_side_by_side.png"
+								alt="Top-down trajectories of Astra flying the racing course in ATTI mode over five episodes"
+								class="image fit"
+								style="margin-bottom: 0.5em;"
+							/>
+							<div style="display: grid; grid-template-columns: repeat(5, 1fr); column-gap: 1%; padding: 0 0.9% 0 2.75%; box-sizing: border-box;">
+								<div style="min-width: 0; text-align: center;">
+									<video
+										src="media/astra-as-a-drone-pilot/videos/oct11_ft_racing_ctatt_ep0.mp4"
+										controls
+										muted
+										playsinline
+										preload="metadata"
+										style="display: block; width: 100%;"
+									></video>
+									<span style="font-size: 0.9em;">Ep 1 (5 collisions)</span>
+								</div>
+								<div style="min-width: 0; text-align: center;">
+									<video
+										src="media/astra-as-a-drone-pilot/videos/oct11_ft_racing_ctatt_ep1.mp4"
+										controls
+										muted
+										playsinline
+										preload="metadata"
+										style="display: block; width: 100%;"
+									></video>
+									<span style="font-size: 0.9em;">Ep 2 (2 collisions)</span>
+								</div>
+								<div style="min-width: 0; text-align: center;">
+									<video
+										src="media/astra-as-a-drone-pilot/videos/oct11_ft_racing_ctatt_ep2.mp4"
+										controls
+										muted
+										playsinline
+										preload="metadata"
+										style="display: block; width: 100%;"
+									></video>
+									<span style="font-size: 0.9em;">Ep 3 (1 collision)</span>
+								</div>
+								<div style="min-width: 0; text-align: center;">
+									<video
+										src="media/astra-as-a-drone-pilot/videos/oct11_ft_racing_ctatt_ep3.mp4"
+										controls
+										muted
+										playsinline
+										preload="metadata"
+										style="display: block; width: 100%;"
+									></video>
+									<span style="font-size: 0.9em;">Ep 4 (1 collision)</span>
+								</div>
+								<div style="min-width: 0; text-align: center;">
+									<video
+										src="media/astra-as-a-drone-pilot/videos/oct11_ft_racing_ctatt_ep4.mp4"
+										controls
+										muted
+										playsinline
+										preload="metadata"
+										style="display: block; width: 100%;"
+									></video>
+									<span style="font-size: 0.9em;">Ep 5 (2 collisions)</span>
+								</div>
+							</div>
+							<figcaption style="text-align: center; margin-top: 0.25em;">
+								<b>Figure 4</b>. Top-down trajectories (top) and videos (bottom) for each of the five
+								ATTI-mode racing episodes.
+							</figcaption>
+						</figure>
 
 						<p>
 							We observe gradual improvements over the episodes. In the first episode, the agent
