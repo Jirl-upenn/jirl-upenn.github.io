@@ -339,10 +339,9 @@
 						</p>
 						<p>
 							Every agent observes its own history of
-							frames, and can read and write to a shared scratchpad used for coordination (Fig X). We
+							frames, and can read and write to a shared scratchpad used for coordination (Fig 3). We
 							use exactly the same exploration and search task as above, but modify the target human to be the policeman in yellow.
-							The agents are instructed to finish both phases as fast as possible
-through collaboration. 
+							The agents are instructed to finish both phases as fast as possible through collaboration. 
 						</p>
 
 						<h3>Exploration Stage</h3>
@@ -391,21 +390,18 @@ through collaboration.
 						</figure>
 
 						<p>
-							As expected, “Swarming” the building results in
-							faster exploration. This is because the agents explore different parts of the building, albeit unevenly
-							distributed. For example, agent 1 explores the bottom floor, while agent 2 and agent 3
-							explore overlapping parts of the first and second floors. By inspecting the shared
-							scratchpad, we observe that agents share information about where they locate humans in
-							relation to landmarks (e.g., doors or windows). Another surprising finding is that they
-							can correctly identify other agents, even when they are all visually identical. This is
-							visible at time X, where agent 3 sees agent 2 passing by. In its own scratchpad, it
-							says: “I see X” .
+							As expected, “swarming” the building results in
+							faster exploration. This is because the agents explore different but overlapping parts of the building.
+							For example, agent 1 is the only one to explore the first floor, and shares what it observes in the communal scratchpad.
 						</p>
-
 						<p>
+							We make a few suprising finding by inspecting the shared scratchpad. First, we observe that agents share information
+							about where they locate humans in relation to landmarks (e.g., doors or windows). Second, they
+							can correctly identify their fellow agents, despite the fact that they are all visually identical (Fig. 4).
+							For example, Agent 3 at 0:10 sees another drone above itself and writes in the scratchpad: “I see agent 2 above me”.
 							The most likely hypothesis is that agent 3 does so by matching what it sees to what
-							agent 2 has reported in the shared scratchpad. An interesting byproduct of text-based
-							collaboration!
+							agent 2 has reported in the shared scratchpad.
+							This is quite impressive, as it indicates that Astra is capable of spatial perspective-taking <a href="#ref-4">[4]</a>. 
 						</p>
 
 						<h3>Search Stage</h3>
@@ -458,30 +454,26 @@ through collaboration.
 						<p>
 							The results of this experiment are very intriguing. Agent 3 is the first to reach the
 							target, and does so in
-							a very agile fashion (passing through a small window). Notably, Agent 3 did NOT explore
-							the bottom floor in the exploration stage, so it relied completely on the information
+							a very agile fashion (passing through a small window). Notably, <em>Agent 3 did not explore
+							the first floor in the exploration stage</em>, so it relied completely on the information
 							shared by Agent 1 (who was the only one to explore it) in the communal scratchpad.
 						</p>
 
 						<p>
-							Also, Agent 3 followed a different route than Agent 1 did when Agent 1 first saw the
-							target during the exploration phase. This indicates that it used landmarks to localize
-							itself and find a shortcut. Overall, this indicates quite advanced “swarming”
-							capabilities!
+							Also, Agent 3 followed a different route than Agent 1 did when it first saw the
+							target during the exploration phase. Therefore, agent 3 must have used the information
+							provided by Agent 1 to find a shortcut to the target. <b>These are quite advanced swarming
+							techniques!</b>
 						</p>
 
-						<h2>Is this a new capability?</h2>
+						<h2>Are such spatial capabilities unique to Astra?</h2>
 
 						<p>
-							The experiments above indicate that Astra has strong spatial capabilities. An
-							interesting question is whether this skill is present only in the latest and most
-							powerful GPT-Astra model, or was also present in earlier models, but nobody bothered to
-							look for it. To answer this question, we evaluate a set of models on the task of
+						 	Were these spatial capabilities also present in earlier or weaker models, but nobody bothered to
+							look for it? To answer this question, we evaluate a set of models on the task of
 							vision-based drone racing. Specifically, we ask the agent to pass a set of waypoints
 							(generally referred to as gates) in order. We give each gate a unique color for easy
-							identification. TODO: Add videos, all at episode zero. Also add models from prior
-							generations (5.6) (from which I recall seeing results, but they are not present in the
-							journal).
+							identification.
 						</p>
 
 						<figure style="margin-bottom: 1.5em;">
@@ -567,14 +559,22 @@ through collaboration.
 						</figure>
 
 						<p>
-							The results clearly show that prior models or cheaper concurrent models struggle
+							The results clearly show that prior models from the 5.6 family or cheaper concurrent models (Luna and Sol) struggle
 							significantly with spatial reasoning, even in this simple waypoint navigation task.
-							Particularly interesting is the fact that both Sol and Luna correctly recognize the next
+							We even tried to give them 4 more episodes to see if they could learn in-context to solve the task,
+							providing them with feedback after each episode on which gates they passed, how far 
+							they were from the center, and how many collisions they had. Sol improved a lot, but still failed to
+							complete the task without collisions after 5 episodes. Luna did not improve as much, and always failed pretty badly. 
+							In contrast to all these models, Astra succeeded at the task in the first episode.
+						</p>
+
+						<p>
+							Particularly interesting is the fact that both Sol and Luna often recognize the next
 							gate in the image, but struggle with altitude and orientation. This suggests that older
 							models are very strong 2D detectors, but have poor 3D spatial understanding. In our
-							prior work, we evaluated older models from the Gemini family and a few open-source
-							models for navigation tasks and found similar results. It seems that something was done
-							in Astra that bestowed it with such spatial reasoning.
+							prior work <a href="ref5">[5]</a>, we evaluated older models from the Gemini family and a few open-source
+							models in navigation tasks and found similar results. It seems that something was done
+							in Astra that bestowed it with such 3D spatial reasoning.
 						</p>
 
 						<h2>Flying like a human pilot: Learning Low-Level Control</h2>
@@ -584,10 +584,11 @@ through collaboration.
 							dynamics were offloaded onto the low-level velocity-tracking controller. In this
 							section, we study whether Astra can learn to control the drone's underactuated dynamics
 							through trial and error. Specifically, we ask Astra to predict the drone’s orientation
-							(attitude) and the net upward force (collective thrust) in the body frame. This is a
-							control level commonly used by human pilots, and generally referred to as ATTI mode (See
-							link). Controlling the dynamics requires lower latency, so we increase Astra’s control
-							frequency to 10Hz.
+							(attitude) and the net upward force (thrust) in the body frame. This is a
+							control level commonly used by human pilots, and generally referred to as
+							<a href="https://docs.px4.io/main/en/flight_stack/controller_diagrams">ATTI mode</a>.
+							Controlling the dynamics requires lower latency, so we increase Astra’s control
+							frequency to 10Hz (Fig. 4).
 						</p>
 
 						<figure style="margin-bottom: 1.5em;">
@@ -598,7 +599,7 @@ through collaboration.
 								style="width: 70%; margin: 0 auto;"
 							/>
 							<figcaption style="text-align: center; margin-top: 0.25em;">
-								<b>Figure 3</b>. Attitude-control (ATTI) scheme.
+								<b>Figure 4</b>. Attitude-control (ATTI) scheme.
 							</figcaption>
 						</figure>
 
@@ -607,7 +608,7 @@ through collaboration.
 							practical standpoint, as it enables flying a drone without a state estimation system.
 							This is very useful since, in our experience with vision-based drones in GPS-denied
 							environments, state estimation is one of the weakest links and requires considerable
-							engineering to be acceptable (ever wondered why the majority of drone research happens
+							engineering (ever wondered why the majority of drone research happens
 							in Vicon-equipped flying arenas or outdoors, far away from obstacles?) 
 						</p>
 
@@ -763,6 +764,12 @@ through collaboration.
 								</li>
 								<li id="ref-3">
 									<a href="https://en.wikipedia.org/wiki/Latent_learning">Latent Learning</a>
+								</li>
+								<li id="ref-4">
+									<a href="https://www.tc.columbia.edu/faculty/bt2158/faculty-profile/files/9_Tversky_Hard_Embodiedanddisembodiedcognition.pdf">Embodied and disembodied cognition: Spatial perspective-taking</a>
+								</li>
+								<li id="ref-5">
+									<a href="https://arxiv.org/abs/2411.05755">End-to-End Navigation with Vision Language Models: Transforming Spatial Reasoning into Question-Answering</a>
 								</li>
 							</ol>
 						</section>
