@@ -57,14 +57,17 @@
 						<h2>Let’s forget about latency</h2>
 
 						<p>
-							Let’s change the question slightly to: “Could Astra control a drone solely from a
-							first-person view image, if latency were not a problem?” To answer this question, we
-							perform our tests in simulation, which gives us full control over latency. Specifically,
+							Let’s change the question slightly to: <b>Could Astra control a drone solely from a
+							first-person view image, if latency were not a problem?</b>
+						</p>
+						
+						<p>
+							To answer this question, we perform our tests in simulation, which gives us full control over latency. Specifically,
 							we start with the architecture depicted in Fig. 1. Astra takes as input the full history
-							of frames and a prompt describing the task at a high level and the drone's dimensions.
+							of frames and a prompt describing the task at a high level (prompts are provided at the end of this post).
 							It uses this information to output a velocity command in the camera frame (vx, vy, vz)
 							and a yaw rate, plus some information in the scratchpad (we do not give any directive
-							for what information should go there).
+							for what information should go there). 
 						</p>
 
 						<figure style="margin-bottom: 1.5em;">
@@ -80,37 +83,54 @@
 						</figure>
 
 						<p>
-							We block the simulation until we receive the answer (so latency is zero). However, the
+							We block the simulation until we receive the answer (so latency is zero). The
 							input and control update frequencies are 2Hz, and the velocity is kept constant until a
-							new command is received. We use an off-the-shelf velocity controller to track the
-							desired speed. It is important to understand that this control hierarchy still requires
-							a state estimation system to track the desired speed. An expert human pilot can do
+							new command is received. We use an off-the-shelf velocity controller<a href="#ref-2">[2]</a> to track the
+							desired speed and yaw. 
+						</p>
+						
+						<p>
+							Note that this control hierarchy requires
+							a state estimation system to track the desired commands. An expert human pilot can do
 							without (more on this later). However, this choice allows us to understand Astra's
 							spatial capabilities without incurring exorbitant costs. For a similar economic reason,
-							we use low reasoning on all our queries. We evaluate this approach on 3 object search
-							tasks: 1.
+							we use low reasoning on all our queries.
 						</p>
 
-						<p>
-							Finding a broken window on the exterior of a building. 2. Finding a rusted pillar on a
-							bridge. 3. Finding a human in a collapsed building. The task is completed if the agent
-							gets within 1m of the target object and issues a “Complete” command. It has up to 2
-							minutes to complete the task, and it cannot see the target object from its initial
-							location. We impose a speed limit of |vx| &lt; 5 m/s, |vy| &lt; 1.5 m/s, |vz| &lt; 1
-							m/s, and |yaw rate| &lt; X. These numbers are chosen somewhat arbitrarily, taking into
-							account the 2Hz update rate and the camera pointing forward. It is worth noting that
-							existing methods for this task are quite complex.
+						<p style="margin-bottom: 0.75em;">
+							We evaluate this approach on 3 object search tasks:
+						<ol>
+							<li><em>Finding a broken window on the exterior of a building.</em></li>
+							<li><em>Finding a rusted pillar on a bridge.</em></li>
+							<li><em>Finding a human in a collapsed building.</em></li>
+						</ol>
 						</p>
 
-						<p>
+						<p>It is worth noting that
+							existing methods for accomplishing such tasks are quite complex.
 							They require the orchestration of multiple components, such as object detection, 3D
 							mapping, exploration routines, and obstacle-avoidance modules. For a recent and quite
 							impressive real-world example, please check out this work
-							<a href="#ref-1">[1]</a>. We built the simulation environments by modifying 3D
+							<a href="#ref-1">[1]</a>.
+						</p>
+
+						<h3>Experimental Setup</h3>
+
+						<p>
+							A task is completed if the agent
+							gets within 1m of the target object and issues a <em>Complete</em> command. It has up to 2
+							minutes to finish the task, and it cannot see the target object from its initial
+							location. We impose a speed limit of |vx| &lt; 5 m/s, |vy| &lt; 1.5 m/s, |vz| &lt; 1
+							m/s, and |yaw rate| &lt; X. These numbers are chosen somewhat arbitrarily, taking into
+							account the 2Hz update rate and the fact that the camera is pointing forward. 
+						</p>
+
+						<p>
+							We built the simulation environments by modifying 3D
 							assets that we found online. The agent must complete the task in a single episode. It
 							does not have access to the environment beforehand, nor to its 3D CAD or any other
 							information about it. To make our best effort to avoid information leakage, we only use
-							Claude to help us with coding and environment creation.
+							Claude Code to help us with coding and environment creation.
 						</p>
 
 						<p>
@@ -146,7 +166,7 @@
 						<p>
 							To make this task a little spicier, we made the bridge perfectly symmetrical and
 							initialized the agent in the center. However, we gave it a little more semantic
-							information: in the prompt, we said that the sun is setting in the west and the rusted
+							information: in the prompt, we say that the sun is setting in the west and the rusted
 							pillar was on the east side of the bridge.
 						</p>
 
@@ -169,9 +189,9 @@
 
 						<p>
 							Interestingly, the robot goes directly to the correct side of the bridge.
-							Inspecting the scratchpad explains why. It recognizes that the right-hand side of the
+							Inspecting the scratchpad explains why. It does so by recognizing that the right-hand side of the
 							image is brighter than the left-hand side. Therefore, the sun must be setting on the
-							right, and the rusted pillar is on the left.
+							right, and the rusted pillar is on the left. We know this because the agent explicitly says so in the scratchpad.
 						</p>
 
 						<h3>Finding a human in a collapsed building</h3>
@@ -199,28 +219,39 @@
 							then reach the target upon detection. Since the building is half-collapsed and the agent
 							has no prior knowledge of where the human might be, it makes sense to start with this
 							approach rather than directly entering the lower part of the building to minimize the
-							total time required to cover the entire building.
+							total time required to cover the entire search area.
 						</p>
 
 						<h2>But what about spatial memory?</h2>
 
 						<p>
-							A trained eye could critique the results presented above, saying that they only test a
+							A limitation of the results presented above is that they only test a
 							relatively shallow form of spatial understanding. It could be that Astra is just a good
 							2D detection system and happened to have the target object in view at some point. No 3D
 							understanding of the environment is required for success. To probe this hypothesis, we
-							slightly change the task formulation. We divide the task into two stages. In the first
-							stage (exploration), the agent has 2 minutes to explore the environment and locate
-							objects of interest (injured humans). In the second stage (search), the agent has to
-							reach a target human as quickly as possible.
+							slightly change the task formulation. 
+						</p>
+
+						<p>	
+							We divide the navigation task into two stages. In the first
+							stage (<em>exploration</em>), the agent has 2 minutes to explore the environment and locate any istance of
+							objects of interest (injured humans). In the second stage (<em>search</em>), the agent has to
+							reach a specific human as quickly as possible.
 						</p>
 
 						<p>
-							Note that in the first stage, the agent has no information about the target or how many
-							humans are present in the building. This task is inspired by experiments in behavioral
-							science used to evaluate “latent [spatial] learning” in children, and commonly used to
+							In the exploration stage, the agent has no information about how many
+							humans are present in the building or where they are located. This task is inspired by experiments in behavioral
+							science used to evaluate spatial learning in children <a href="#ref-3">[3]</a>, and commonly used to
 							benchmark autonomous navigation agents. Being successful requires exploration and
 							spatial memory of the environment.
+						</p>
+
+
+						<p>
+							We perform the test as follows. We place 6 humans in
+							a three-story building, with two humans per floor. All humans have distinctive features
+							(see Fig. 2). In the search phase, we ask the agent to find the person with the red t-shirt.
 						</p>
 
 						<figure style="margin-bottom: 1.5em;">
@@ -231,16 +262,9 @@
 								style="width: 70%; margin: 0 auto;"
 							/>
 							<figcaption style="text-align: center; margin-top: 0.25em;">
-								<b>Figure 2</b>. The six humans Astra encounters bear distinctive features.
+								<b>Figure 2</b>. The six humans the drone encounters bear distinctive features. 
 							</figcaption>
 						</figure>
-
-						<p>
-							We perform the test as follows. We place 6 humans in
-							a three-story building, with two humans per floor. All humans have distinctive features
-							(see Fig. X). In the search phase, we ask the agent to find the doctor.
-						</p>
-
 
 						<p>
 							To make things a little faster (and save some $), we increase the lateral and vertical
@@ -266,20 +290,19 @@
 						</figure>
 						
 						<p>
-							The agent has explored the building completely (as far as we can
-							tell). However, in tight spaces, it sometimes collides with obstacles. A closer look at
+							The agent has found all humans. However, in tight spaces, it sometimes collides with obstacles. A closer look at
 							the few occasions when this happens suggests it is due to slight errors in predicting
 							the drone’s trajectory relative to obstacles in the 0.5 seconds when the velocity
-							command is held fixed (see, for example, 0:27).
+							command is held fixed (see, for example, 0:38).
 						</p>
 
 						<p>
 							This indicates that Astra might not have been trained on the dynamics of drones, and/or
-							it still makes small mistakes in estimating it’s relative positions to obstacles. Or it
+							it still makes small mistakes in estimating its relative positions to obstacles. Or it
 							could simply be that it does not care much about avoiding collisions, since this is a
-							simulator (nothing in the prompt asks it to avoid collisions at all costs). However, we
-							suspect that simply increasing inference speed could be a highly effective solution to
-							this problem (we’ll come back to this later).
+							simulator (nothing in the prompt asks it to avoid collisions at all costs, and sometimes in the scratchpad it says that walls are made of rubber).
+							However, we suspect that simply increasing inference speed or improving the prompt
+							could be a highly effective solution to this problem (we’ll come back to this later).
 						</p>
 						<h3>Search Stage</h3>
 						<p>
@@ -302,21 +325,23 @@
 						<p>
 							It is worth noting
 							that Astra does not take the shortest path to the target (it could have passed through
-							the window) but instead follows the same route it used during exploration. This suggests
-							that it is not building an explicit 3D map of the environment (it would be very hard to
-							do so from the sparse observations collected during exploration).
+							the window) but instead follows the same route it used during exploration. This might indicate a relatively
+							poor 3D understanding of the environment, or that it found it safer to follow a known path.
+							In the next section, we probe this hypothesis further.
 						</p>
 
 						<h2>Multi-Agent Collaborative Search</h2>
 
 						<p>
-							To further probe how Astra represents the environment, we now conduct a multi-agent
+							To further probe how Astra represents the environment, we conducted a multi-agent exploration and search
 							experiment. Specifically, we spawn three agents at random locations on the map, each
-							controlled by a different instance of Astra. Each agent observes its own history of
-							frames and can read and write to a shared scratchpad used for coordination (Fig X). We
-							use exactly the same exploration and search task as above, but change the target given
-							at test time. The agents are instructed to finish both phases as fast as possible
-							through collaboration. 
+							controlled by a different instance of Astra. 
+						</p>
+						<p>
+							Every agent observes its own history of
+							frames, and can read and write to a shared scratchpad used for coordination (Fig X). We
+							use exactly the same exploration and search task as above, but modify the target human to be the policeman in yellow.
+							The agents are instructed to finish both phases as fast as possible through collaboration. 
 						</p>
 
 						<h3>Exploration Stage</h3>
@@ -579,6 +604,12 @@
 							<ol>
 								<li id="ref-1">
 									<a href="https://arxiv.org/pdf/2606.15476">FARM: Find Anything using Relational Spatial Memory</a>
+								</li>
+								<li id="ref-2">
+									<a href="TODO">Velocity Controller Placeholder</a>
+								</li>
+								<li id="ref-3">
+									<a href="https://en.wikipedia.org/wiki/Latent_learning">Latent Learning</a>
 								</li>
 							</ol>
 						</section>
