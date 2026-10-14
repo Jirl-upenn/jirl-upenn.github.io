@@ -147,7 +147,7 @@
 						<p>
 							<strong>Result:</strong> Success.<br />
 							<strong>Time to completion:</strong> 34 seconds.<br />
-							<strong>Cost:</strong> ~$5.
+							<strong>Cost:</strong> ~$1.52.
 						</p>
 
 						<figure style="margin-bottom: 1.5em;">
@@ -173,7 +173,7 @@
 						<p>
 							<strong>Result:</strong> Success.<br />
 							<strong>Time to completion:</strong> 16 seconds.<br />
-							<strong>Cost:</strong> ~$1.
+							<strong>Cost:</strong> ~$0.50.
 						</p>
 
 						<figure style="margin-bottom: 1.5em;">
@@ -199,7 +199,7 @@
 						<p>
 							<strong>Result:</strong> Success.<br />
 							<strong>Time to completion:</strong> 24 seconds.<br />
-							<strong>Cost:</strong> ~$3.
+							<strong>Cost:</strong> ~$0.88.
 						</p>
 
 						<figure style="margin-bottom: 1.5em;">
@@ -275,7 +275,7 @@
 							
 						<p>
 							<strong>Time to completion:</strong> 47 seconds.<br />
-							<strong>Cost:</strong> X$.
+							<strong>Cost:</strong> ~$2.69.
 						</p>
 
 						<figure style="margin-bottom: 1.5em;">
@@ -308,7 +308,7 @@
 						<p>
 							<strong>Result:</strong> Success.<br />
 							<strong>Time to completion:</strong> 12 seconds.<br />
-							<strong>Cost:</strong> X$.
+							<strong>Cost:</strong> ~$1.40.
 						</p>
 
 						<figure style="margin-bottom: 1.5em;">
@@ -337,10 +337,23 @@
 							experiment. Specifically, we spawn three agents at random locations on the map, each
 							controlled by a different instance of Astra. 
 						</p>
+
+						<figure style="margin-bottom: 1.5em;">
+							<img
+								src="media/astra-as-a-drone-pilot/shared-scratchpad-scheme.png"
+								alt="Multi-agent diagram showing agents sharing a scratchpad for velocity control"
+								class="image fit"
+								style="width: 70%; margin: 0 auto;"
+							/>
+							<figcaption style="text-align: center; margin-top: 0.25em;">
+								<b>Figure 3</b>. Each agent performs velocity control with access to a shared scratchpad.
+							</figcaption>
+						</figure>
+
 						<p>
 							Every agent observes its own history of
 							frames, and can read and write to a shared scratchpad used for coordination (Fig 3). We
-							use exactly the same exploration and search task as above, but modify the target human to be the policeman in yellow.
+							use exactly the same exploration and search task as above, but modify the target human to be the policeman in the orange vest.
 							The agents are instructed to finish both phases as fast as possible through collaboration. 
 						</p>
 
@@ -348,7 +361,7 @@
 						
 						<p>
 							<strong>Time to completion:</strong> 33 seconds (approximately the same for all agents).<br />
-							<strong>Cost:</strong> X$.
+							<strong>Cost:</strong> ~$4.68.
 						</p>
 
 						<figure style="margin-bottom: 1.5em;">
@@ -410,7 +423,7 @@
 							<strong>Result:</strong> Success.<br />
 							<strong>Time to completion:</strong> 10 seconds
 							(simulation is stopped after one agent issues a complete command).<br />
-							<strong>Cost:</strong> X$.
+							<strong>Cost:</strong> ~$2.45.
 						</p>
 
 						<figure style="margin-bottom: 1.5em;">
@@ -623,7 +636,7 @@
 
 						<p>
 							<strong>Result:</strong> Failure.<br />
-							<strong>Cost:</strong> X$.
+							<strong>Cost:</strong> ~$54.94.
 						</p>
 
 						<figure style="margin-bottom: 1.5em;">
@@ -691,7 +704,7 @@
 								</div>
 							</div>
 							<figcaption style="text-align: center; margin-top: 0.25em;">
-								<b>Figure 4</b>. Top-down trajectories (top) and videos (bottom) for each of the five
+								<b>Figure 5</b>. Top-down trajectories (top) and videos (bottom) for each of the five
 								ATTI-mode racing episodes.
 							</figcaption>
 						</figure>
@@ -777,6 +790,34 @@
 						<section>
 							<h2>Prompts</h2>
 							<!-- Add each prompt in its own <pre><code> block. -->
+
+							<h3>Finding a broken window on the exterior of a building</h3>
+							<pre style="white-space: pre-wrap;"><code>You are controlling an fpv drone to conduct an inspection in a simulated factory environment. Your task is to inspect the exterior of the factory building to identify a broken window. Your action output is a 4 dim velocity vector: vx = forward speed in m/s, along where the camera points, levelled to horizontal; vy = sideways speed in m/s, positive is left; vz = vertical speed in m/s, positive is climb; yaw_rate_deg_s = turn rate in deg/s, positive turns left. Each reply also carries a status: Searching while you are still working on the task, Complete once it is done, which ends the run. Please find the broken window. If it exists, keep it in frame and hover within one meter of it before outputting 'Complete'.</code></pre>
+
+							<h3>Finding a rusted pillar on a bridge</h3>
+							<pre style="white-space: pre-wrap;"><code>You are controlling an fpv drone to conduct an inspection in a simulated bridge environment. Note that the west side of the bridge points towards the setting sun. Your task is to inspect the east pylon for a rusted cross member. Your action output is a 4 dim velocity vector: vx = forward speed   in m/s, along where the camera points, levelled to horizontal; vy = sideways speed in m/s, positive is left; vz = vertical speed in m/s, positive is climb; yaw_rate_deg_s = turn rate in deg/s, positive turns left. Each reply also carries a status: Searching while you are still working on the task, Complete once it is done, which ends the run. Please find the rusted cross member. If it exists, keep it in frame and hover within one meter of it before outputting 'Complete'.</code></pre>
+
+							<h3>Finding a human in a collapsed building</h3>
+							<pre style="white-space: pre-wrap;"><code>You are controlling an fpv drone to conduct a search in a simulated earthquake environment. Your task is to search the damaged building to find an injured human. Your action output is a 4 dim velocity vector: vx = forward speed in m/s, along where the camera points, levelled to horizontal; vy = sideways speed in m/s, positive is left; vz = vertical speed in m/s, positive is climb; yaw_rate_deg_s = turn rate in deg/s, positive turns left. Each reply also carries a status: Searching while you are still working on the task, Complete once it is done, which ends the run. Please find the injured human. If the human exists, keep them in frame and hover within one meter of them before outputting 'Complete'.</code></pre>
+
+							<h3>Single Agent Exploration</h3>
+							<pre style="white-space: pre-wrap;"><code>You are controlling an fpv drone to conduct a search in a simulated earthquake environment. You have two minutes to explore the damaged building and look for injured humans. After the two minute exploration phase, you will be reset into a new episode, and you will be prompted to find a specific human of interest based on their appearance. Your task is to locate that human as fast as possible. The drone is a small quadcopter with a 14 cm diagonal, and the camera is mounted on top near the center, facing forward. Your action output is a 4 dim velocity vector: vx = forward speed in m/s, along where the camera points, levelled to horizontal; vy = sideways speed in m/s, positive is left; vz = vertical speed in m/s, positive is climb; yaw_rate_deg_s = turn rate in deg/s, positive turns left. Each reply also carries a status: Searching while you are still working on the task, Complete once it is done, which ends the run. You may output 'Complete' during the exploration phase to end it early. If the target human exists, keep them in frame and hover within one meter of them before outputting 'Complete'.</code></pre>
+
+							<h3>Single Agent Search</h3>
+							<pre style="white-space: pre-wrap;"><code> You have been reset to the start of a new episode. Find this human of interest: a man in a red short-sleeved shirt and beige trousers, wearing sunglasses. Locate them as fast as possible; you have 15 seconds.</code></pre>
+
+							<h3>Multi-Agent Exploration</h3>
+							<pre style="white-space: pre-wrap;"><code>You are controlling one of 3 fpv drones conducting a search in a simulated earthquake environment. You are agent 1; the agents are numbered 1 to 3. Your team must explore the damaged building and look for injured humans as quickly as possible. The exploration phase ends after one minute and every drone will be reset into a new episode, where you will be prompted to find a specific human of interest based on their appearance. Your team's task is to locate that human as fast as possible. The drone is a small quadcopter with a 14 cm diagonal, and the camera is mounted on top near the center, facing forward. The other drones are also gpt-6-astra agents, and you may see them in your camera view. They are solid, so you can collide with them. The other agents do not see your camera view or your own scratchpad: the only way to share what you find is the shared scratchpad, which every agent can write to and every agent is shown each turn, each message labelled with the id of the agent that wrote it. Your action output is a 4 dim velocity vector: vx = forward speed in m/s, along where the camera points, levelled to horizontal; vy = sideways speed in m/s, positive is left; vz = vertical speed in m/s, positive is climb; yaw_rate_deg_s = turn rate in deg/s, positive turns left. Each reply also carries a status: Searching while you are still working on the task, Complete once it is done, which ends the run. You may output 'Complete' during the exploration phase to end your own exploration early; the phase ends when every agent has done so or the minute is up. In the search phase, the first 'Complete' from any agent ends the search for the whole team and is judged at that agent's position. If the target human exists, keep them in frame and hover within one meter of them before outputting 'Complete'.</code></pre>
+
+							<h3>Multi-Agent Search</h3>
+							<pre style="white-space: pre-wrap;"><code>You have been reset to the start of a new episode. Find this human of interest: a police officer in a light blue long-sleeved uniform shirt, an orange hi-vis vest, white gloves, light grey trousers and a grey peaked cap. Locate them as fast as possible; you have 15 seconds</code></pre>
+							
+							<h3>Is this a new capability?</h3>
+							<pre style="white-space: pre-wrap;"><code>You are controlling an fpv drone in a real-time simulated drone racing track. Please fly through the gates of this figure 8 track. The order of gates is RED -> BLUE -> GREEN -> ORANGE -> BLUE -> MAGENTA -> repeat. Your action output is a 4 dim velocity vector: vx = forward speed in m/s, along where the camera points, levelled to horizontal; vy = sideways speed in m/s, positive is left; vz = vertical speed in m/s, positive is climb; yaw_rate_deg_s = turn rate in deg/s, positive turns left. The run ends after 30 seconds. You get 5 attempts at this track. After each attempt you are told how it went and respawned at the start; everything from your earlier attempts stays in this conversation, so use it to fly better the next time.</code></pre>
+
+							<h3>Learning Low-Level Control</h3>
+							<pre style="white-space: pre-wrap;"><code>You are controlling an fpv drone in a simulated drone racing track where real-time latency is not a concern. Please fly through the gates of this figure 8 track as well as possible, i.e., quickly and avoiding collisions. The order of gates is RED -> BLUE -> GREEN -> ORANGE -> BLUE -> MAGENTA -> repeat. Your action output is a 4 dim attitude command: thrust = collective thrust as a multiple of hover thrust, 1.0 holds altitude when level; roll_deg = bank angle in degrees, positive banks right; pitch_deg = pitch angle in degrees, positive tilts the nose down and accelerates forward; yaw_deg = heading change in degrees from where you face now, positive turns left. Each attempt ends after 10 seconds. You have a maximum of 5 attempts to do as best as you can</code></pre>
+						</section>
 						</section>
 
 						<ul class="actions">
