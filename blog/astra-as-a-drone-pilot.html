@@ -34,8 +34,34 @@
 							We have all seen GPT-6 Astra's impressive capabilities in the last few weeks:
 							<a href="https://drivingbench.com/">controlling a real car</a>, <a href="https://openai.robocurve.org/gpt-6-astra/">doing some basic pick-and-place</a>, 
 							and performing <a href="https://x.com/cdngdev/status/2097339677128982873">other manipulation tasks</a> that require some level of
-							spatial understanding. Since our group mostly works on aerial
-							robotics, we decided to ask the following question: <b>Can GPT-6 Astra directly control a drone solely
+							spatial understanding. One limitation of prior demonstrations is that they focus on relatively small spaces (such as a tabletop),
+							and they do not probe the model's spatial 3D understanding of large areas. It is hard to blame them: a tabletop robot cannot move,
+							and it might not be wise to test a car beyond a small and highly controlled parking lot.
+							Prior models are known to be poor at spatial understanding of large areas <a href="ref-1">[1]</a><a href="ref-7">[7]</a>, and
+							require a dedicated harness to keep memory of the environment and effectively navigate within it (such a 3D map of the environment, an exploration strategy, and a motion planner).
+						</p>
+						
+						<p>
+							The recent demonstrations of GPT-6 Astra prompted us to ask whether such a harness is still necessary.
+							<em>Could Astra directly output low-level control commands of a mobile robot (such as body-frame velocities) and still be 
+							successfull in tasks that require 3D spatial understanding of large areas, with no other sensor than
+							a single RGB camera?</em> 
+						</p>
+						
+						<p>
+							This is a very interesting scientific question: the emergence of 3D
+							spatial understanding in LLMs is a hotly debated topic in the community. However, it could also
+							bring about significant practical advantages: existing methods for mapping and navigation are 
+							known to be brittle when only using a single RGB camera, and they require significant 
+							engineering effort every time that the task or some aspects of the environment change.
+							A general-purpose model that can direclty output control commands would be profundly enabling
+							for companies and researchers that lack the expertise or the resources to build
+							and maintain 3D mapping and navigation systems.
+						</p>
+
+						<p>
+							As the specific type of mobile robot, we chose a quadcopter. Their ability to move in 3D at high speeds makes them the ideal
+							testbed for our investigation. So specifically, we ask the following question: <b>Can GPT-6 Astra directly control a drone solely
 							from a first-person view image (akin to human pilots)?</b> 
 						</p>
 
@@ -70,7 +96,11 @@
 							a prompt describing the task at a high level (prompts are provided at the end of this post).
 							It uses this information to output a velocity command in the levelled camera frame (vx, vy, vz)
 							and a yaw rate, plus some information in the scratchpad (we do not give any directive
-							for what information should go there). Every input, predicted command, and scratchpad is appended to the context.
+							for what information should go there). We add a scratchpad for two reasons:
+							(1) as a condensed way to store information about the environment, and (2) to help us interpret
+							the model's reasoning (in the low-mode setting we use, Astra output contained no explicit CoT tokens).
+							Every input, predicted command, and scratchpad is appended to the context,
+							and used for the next query.
 						</p>
 
 						<figure style="margin-bottom: 1.5em;">
@@ -237,7 +267,7 @@
 
 						<p>	
 							We divide the navigation task into two stages. In the first
-							stage (<em>exploration</em>), the agent has 2 minutes to explore the environment and locate any istance of
+							stage (<em>exploration</em>), the agent has 2 minutes to explore the environment and locate any instance of
 							objects of interest (injured humans). In the second stage (<em>search</em>), the agent has to
 							reach a specific human as quickly as possible.
 						</p>
@@ -411,9 +441,9 @@
 							For example, Agent 1 is the only one to explore the first floor, and shares what it observes in the communal scratchpad.
 						</p>
 						<p>
-							We make a few suprising finding by inspecting the shared scratchpad. First, we observe that agents share information
+							We make a few suprising findings by inspecting the shared scratchpad. First, we observe that agents share information
 							about where they locate humans in relation to landmarks (e.g., doors or windows). Second, they
-							can correctly identify their fellow agents, despite the fact that they are all visually identical (Fig. 4).
+							can correctly identify their fellow agents, despite the fact that they are all visually identical.
 							For example, Agent 2 at 0:10 sees another drone below itself and indicates seeing Agent 3 in its personal scratchpad.
 							The most likely hypothesis is that Agent 2 does so by matching what it sees to what
 							Agent 3 has reported in the shared scratchpad (see below).
@@ -598,7 +628,7 @@ Agent 3, 7.65s: "Agent2 red/white likely same red-shirt man I mapped; I will mov
 							Particularly interesting is the fact that both Sol and Luna often recognize the next
 							gate in the image, but struggle with altitude and orientation. This suggests that older
 							models are very strong 2D detectors, but have poor 3D spatial understanding. In our
-							prior work <a href="ref5">[5]</a>, we evaluated older models from the Gemini family and a few open-source
+							prior work <a href="ref-5">[5]</a>, we evaluated older models from the Gemini family and a few open-source
 							models in navigation tasks and found similar results. It seems that something was done
 							in Astra that bestowed it with such 3D spatial reasoning.
 						</p>
@@ -733,7 +763,7 @@ Agent 3, 7.65s: "Agent2 red/white likely same red-shirt man I mapped; I will mov
 						<p>
 							In the last episode, it still experienced some collisions, and it is therefore
 							fair to call this evaluation a failure. Despite the final trajectory being inferior to
-							that of a vision-based policy trained specifically for the task <a href="#ref6">[6]</a>, we arguably
+							that of a vision-based policy trained specifically for the task <a href="#ref-6">[6]</a>, we arguably
 							observe some trial-and-error learning and improvement. It is not unthinkable that it would succeed with
 							a few more episodes (and $).
 						</p>
@@ -783,7 +813,7 @@ Agent 3, 7.65s: "Agent2 red/white likely same red-shirt man I mapped; I will mov
 						<section>
 							<h2>Acknowledgments</h2>
 							<p>
-								We would like to thank Sam Wang, Daniel Gehrig, Robert Radway, Avik De, and all the members
+								We would like to thank Sam Wang, Daniel Gehrig, Robert Radway, Avik De, Mathias Gehrig, and all the members
 								of our lab for their comments and feedback while we developed this post.
 							</p>
 						</section>
@@ -808,6 +838,9 @@ Agent 3, 7.65s: "Agent2 red/white likely same red-shirt man I mapped; I will mov
 								</li>
 								<li id="ref-6">
 									<a href="https://arxiv.org/pdf/2501.14377">Dream to Fly: Model-Based Reinforcement Learning for Vision-Based Drone Flight</a>
+								</li>
+								<li id="ref-7">
+									<a href="https://proceedings.iclr.cc/paper_files/paper/2026/file/3812c3c803e986eca64000fe92467991-Paper-Conference.pdf">Decoupling Semantics and Spatiality with Dual Implicit Memory for Vision-Language Navigation</a>
 								</li>
 							</ol>
 						</section>
