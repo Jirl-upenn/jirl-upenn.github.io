@@ -23,16 +23,16 @@
 
 					<section>
 						<header class="main">
-							<h1>GPT-Astra as a Drone Pilot</h1>
+							<h1>GPT-6 Astra as a Drone Pilot</h1>
 							<p>By Vineet Pasumarti and Antonio Loquercio</p>
 						</header>
 
 						<p>
-							We have all seen GPT-Astra's impressive capabilities in the last few weeks:
+							We have all seen GPT-6 Astra's impressive capabilities in the last few weeks:
 							<a href="https://drivingbench.com/">controlling a real car</a>, <a href="https://openai.robocurve.org/gpt-6-astra/">doing some basic pick-and-place</a>, 
 							and performing <a href="https://x.com/cdngdev/status/2097339677128982873">other manipulation tasks</a> that require some level of
 							spatial understanding. Since our group mostly works on aerial
-							robotics, we decided to ask the following question: <b>Can GPT-Astra directly control a drone solely
+							robotics, we decided to ask the following question: <b>Can GPT-6 Astra directly control a drone solely
 							from a first-person view image (akin to human pilots)?</b> 
 						</p>
 
@@ -46,7 +46,7 @@
 							before the battery runs out if you move at 0.1 m/s. So, even forgetting about the fact
 							that you can’t run Astra onboard and you’re dependent on a link to the internet, latency
 							stops you from doing anything interesting. While you can pay 6X more for the ultra-fast
-							mode, we were observed a 2s latency in the best case.
+							mode, we observed a 2s latency in the best case.
 						</p>
 
 						<p>
@@ -63,9 +63,9 @@
 						
 						<p>
 							To answer this question, we perform our tests in simulation, which gives us full control over latency.
-							Our control architecture depicted in Fig. 1. Astra takes as input the first-person view image,
+							Our control architecture is depicted in Fig. 1. Astra takes as input the first-person view image,
 							a prompt describing the task at a high level (prompts are provided at the end of this post).
-							It uses this information to output a velocity command in the camera frame (vx, vy, vz)
+							It uses this information to output a velocity command in the levelled camera frame (vx, vy, vz)
 							and a yaw rate, plus some information in the scratchpad (we do not give any directive
 							for what information should go there). Every input, predicted command, and scratchpad is appended to the context.
 						</p>
@@ -126,7 +126,7 @@
 						</p>
 
 						<p>
-							We built the simulation environments by modifying 3D
+							We built the simulation environments by modifying open-source 3D
 							assets that we found online. The agent must complete the task in a single episode. It
 							does not have access to the environment beforehand, nor to its 3D CAD or any other
 							information about it. To make our best effort to avoid information leakage, we only use
@@ -300,7 +300,7 @@
 							This indicates that Astra might not have been trained on the dynamics of drones, and/or
 							it still makes small mistakes in estimating its relative positions to obstacles. Or it
 							could simply be that it does not care much about avoiding collisions, since this is a
-							simulator (nothing in the prompt asks it to avoid collisions at all costs, and sometimes in the scratchpad it says that walls are made of rubber).
+							simulator (nothing in the prompt asks it to avoid collisions at all costs).
 							However, we suspect that simply increasing inference speed or improving the prompt
 							could be a highly effective solution to this problem (we’ll come back to this later).
 						</p>
@@ -405,15 +405,15 @@
 						<p>
 							As expected, “swarming” the building results in
 							faster exploration. This is because the agents explore different but overlapping parts of the building.
-							For example, agent 1 is the only one to explore the first floor, and shares what it observes in the communal scratchpad.
+							For example, Agent 1 is the only one to explore the first floor, and shares what it observes in the communal scratchpad.
 						</p>
 						<p>
 							We make a few suprising finding by inspecting the shared scratchpad. First, we observe that agents share information
 							about where they locate humans in relation to landmarks (e.g., doors or windows). Second, they
 							can correctly identify their fellow agents, despite the fact that they are all visually identical (Fig. 4).
-							For example, agent 2 at 0:10 sees another drone below itself and indicates seeing agent 3 in its personal scratchpad.
-							The most likely hypothesis is that agent 2 does so by matching what it sees to what
-							agent 3 has reported in the shared scratchpad.
+							For example, Agent 2 at 0:10 sees another drone below itself and indicates seeing Agent 3 in its personal scratchpad.
+							The most likely hypothesis is that Agent 2 does so by matching what it sees to what
+							Agent 3 has reported in the shared scratchpad.
 							This is quite impressive, as it indicates that Astra is capable of spatial perspective-taking <a href="#ref-4">[4]</a>. 
 						</p>
 
@@ -484,7 +484,7 @@ Agent 3, 7.65s: "Agent2 red/white likely same red-shirt man I mapped; I will mov
 
 						<p>
 							Also, Agent 3 followed a different route than Agent 1 did when it first saw the
-							target during the exploration phase. Therefore, agent 3 must have used the information
+							target during the exploration phase. Agent 3 must have used the information
 							provided by Agent 1 to find a shortcut to the target. <b>These are quite advanced swarming
 							techniques!</b>
 						</p>
@@ -738,7 +738,7 @@ Agent 3, 7.65s: "Agent2 red/white likely same red-shirt man I mapped; I will mov
 						<h2>Summary and Conclusions</h2>
 
 						<p>
-							It is now time to return to the question we started with: <b>Can GPT-Astra control a
+							It is now time to return to the question we started with: <b>Can GPT-6 Astra control a
 							drone solely from a first-person view (akin to human pilots)?</b> Our investigations show
 							that if you assume latency is zero, it can successfully perform a wide range of tasks.
 						</p>
