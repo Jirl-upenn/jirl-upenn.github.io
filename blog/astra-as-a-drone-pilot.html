@@ -62,12 +62,12 @@
 						</p>
 						
 						<p>
-							To answer this question, we perform our tests in simulation, which gives us full control over latency. Specifically,
-							we start with the architecture depicted in Fig. 1. Astra takes as input the full history
-							of frames and a prompt describing the task at a high level (prompts are provided at the end of this post).
+							To answer this question, we perform our tests in simulation, which gives us full control over latency.
+							Our control architecture depicted in Fig. 1. Astra takes as input the first-person view image,
+							a prompt describing the task at a high level (prompts are provided at the end of this post).
 							It uses this information to output a velocity command in the camera frame (vx, vy, vz)
 							and a yaw rate, plus some information in the scratchpad (we do not give any directive
-							for what information should go there). 
+							for what information should go there). Every input, predicted command, and scratchpad is appended to the context.
 						</p>
 
 						<figure style="margin-bottom: 1.5em;">
@@ -326,7 +326,7 @@
 							It is worth noting
 							that Astra does not take the shortest path to the target (it could have passed through
 							the window) but instead follows the same route it used during exploration. This might indicate a relatively
-							poor 3D understanding of the environment, or that it found it safer to follow a known path.
+							poor 3D understanding of the environment.
 							In the next section, we probe this hypothesis further.
 						</p>
 
@@ -479,7 +479,7 @@
 							techniques!</b>
 						</p>
 
-						<h2>Are such spatial capabilities unique to Astra?</h2>
+						<h2>Are Such Spatial Capabilities Unique to Astra?</h2>
 
 						<p>
 						 	Were these spatial capabilities also present in earlier or weaker models, but nobody bothered to
@@ -629,8 +629,8 @@
 						<p> We perform this experiment on the drone racing task.
 							Specifically, we give the agent 5 episodes to accomplish the task. Each episode is limited to 10s (to keep costs low),
 							and all prior frames and actions are kept in the context. In the prompt, we describe the
-							order in which the gates must be passed and that they should not collide with each
-							other. We do not provide any intermediate feedback between episodes; the agent must
+							order in which the gates must be passed and that the robot should not collide with the gates.
+							We do not provide any intermediate feedback between episodes; the agent must
 							figure out what went wrong and how to correct it on its own.
 						</p>
 
@@ -710,39 +710,39 @@
 						</figure>
 
 						<p>
-							We observe gradual improvements over the episodes. In the first episode, the agent
+							<b>We observe gradual improvements over the episodes</b>. In the first episode, the agent
 							passes a few gates but has very poor
-							control and crashes repeatedly. This indicates that Astra was not trained on the
-							dynamics of drones.
-						</p>
-
-						<p>
+							control and crashes repeatedly. This suggests that Astra was not trained on this task.
 							However, from the second episode onwards, it gets better at maintaining its position and
 							attitude, avoiding collisions, and keeping the next gate in view whenever possible.
-							However, in the last episode, it still experienced some collisions, and it is therefore
+						</p>
+						
+						<p>
+							In the last episode, it still experienced some collisions, and it is therefore
 							fair to call this evaluation a failure. Despite the final trajectory being inferior to
-							that of a vision-based policy trained specifically for the task (e.g., X), we arguably
-							observe some trial-and-error learning and improvement. It is not unthinkable that, with
-							a few more episodes (and a lot more $), it would succeed at this task.
+							that of a vision-based policy trained specifically for the task <a href="#ref6">[6]</a>, we arguably
+							observe some trial-and-error learning and improvement. It is not unthinkable that it would succeed with
+							a few more episodes (and $).
 						</p>
 
 						<h2>Summary and Conclusions</h2>
 
 						<p>
-							It is now time to return to the original question we asked: Can GPT-Astra control a
-							drone solely from a first-person view (akin to human pilots)? Our investigations show
+							It is now time to return to the question we started with: <b>Can GPT-Astra control a
+							drone solely from a first-person view (akin to human pilots)?</b> Our investigations show
 							that if you assume latency is zero, it can successfully perform a wide range of tasks.
-							Qualitatively, its performance is comparable to or slightly inferior to that of
-							state-of-the-art systems specifically designed for each task individually. Notably, we
+						</p>
+						<p>
+							Qualitatively, its performance is comparable to or inferior to that of
+							state-of-the-art systems specifically designed for each task. However, we
 							performed each experiment only once with the first and simplest prompt that came to our
-							mind, so the results are to be interpreted as a lower bound on performance rather than
-							an upper bound.
+							mind, so our results are to be interpreted as a lower bound on performance.							While a thorough quantitative comparison with the state of the art is outside the scope
+							of this blog post, the simplicity and generality of using Astra to directly output
+							control commands are undeniable.
 						</p>
 
 						<p>
-							While a thorough quantitative comparison with the state of the art is outside the scope
-							of this blog post, the simplicity and generality of using Astra to directly output
-							control commands are undeniable. The problem is, however, that in the real world, you
+ 							The problem is, however, that in the real world, you
 							can’t just assume latency to be zero. Computation takes time and energy. Making things
 							worse, the latency (and cost) of transformer-based systems like Astra increases
 							approximately in proportion to the square of the context length, which is arguably a
@@ -752,15 +752,16 @@
 						<p>
 							Finally, if you plan to address the prior issues by having the robot move very slowly
 							and throwing as much money at the problem as needed, the system would still have a
-							single point of failure: its connection to the internet to call the API. This creates a
+							single point of failure: its connection to the internet to call the model. This creates a
 							lot of non-trivial issues, ranging from privacy concerns to safety issues (jamming an
-							internet connection isn’t too hard, even for systems like Starlink) and bandwidth
-							limitations. Will addressing these limitations require a completely different approach,
+							internet connection isn’t too hard) and bandwidth
+							limitations. 
+						</p>
+						
+						<p>
+							Will addressing these limitations require a completely different approach,
 							or just finding a way to reduce latency and run the model onboard? With the information
 							that we have today, we can’t really say.
-						</p>
-
-						<p>
 							But the fact that we finally have decent end-to-end robot control capabilities from a
 							VLM should push us to think more deeply about how to select research directions. We’re
 							not in Kansas anymore.
@@ -773,7 +774,7 @@
 									<a href="https://arxiv.org/pdf/2606.15476">FARM: Find Anything using Relational Spatial Memory</a>
 								</li>
 								<li id="ref-2">
-									<a href="TODO">Velocity Controller Placeholder</a>
+									<a href="https://arxiv.org/abs/2306.04485">RotorPy: A Python-based Multirotor Simulator with Aerodynamics for Education and Research</a>
 								</li>
 								<li id="ref-3">
 									<a href="https://en.wikipedia.org/wiki/Latent_learning">Latent Learning</a>
@@ -783,6 +784,9 @@
 								</li>
 								<li id="ref-5">
 									<a href="https://arxiv.org/abs/2411.05755">End-to-End Navigation with Vision Language Models: Transforming Spatial Reasoning into Question-Answering</a>
+								</li>
+								<li id="ref-6">
+									<a href="https://arxiv.org/pdf/2501.14377">Dream to Fly: Model-Based Reinforcement Learning for Vision-Based Drone Flight</a>
 								</li>
 							</ol>
 						</section>
@@ -812,7 +816,7 @@
 							<h3>Multi-Agent Search</h3>
 							<pre style="white-space: pre-wrap;"><code>You have been reset to the start of a new episode. Find this human of interest: a police officer in a light blue long-sleeved uniform shirt, an orange hi-vis vest, white gloves, light grey trousers and a grey peaked cap. Locate them as fast as possible; you have 15 seconds</code></pre>
 							
-							<h3>Is this a new capability?</h3>
+							<h3>Are Such Spatial Capabilities Unique to Astra?</h3>
 							<pre style="white-space: pre-wrap;"><code>You are controlling an fpv drone in a real-time simulated drone racing track. Please fly through the gates of this figure 8 track. The order of gates is RED -> BLUE -> GREEN -> ORANGE -> BLUE -> MAGENTA -> repeat. Your action output is a 4 dim velocity vector: vx = forward speed in m/s, along where the camera points, levelled to horizontal; vy = sideways speed in m/s, positive is left; vz = vertical speed in m/s, positive is climb; yaw_rate_deg_s = turn rate in deg/s, positive turns left. The run ends after 30 seconds. You get 5 attempts at this track. After each attempt you are told how it went and respawned at the start; everything from your earlier attempts stays in this conversation, so use it to fly better the next time.</code></pre>
 
 							<h3>Learning Low-Level Control</h3>
