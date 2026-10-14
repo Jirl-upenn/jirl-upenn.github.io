@@ -300,7 +300,7 @@
 							This indicates that Astra might not have been trained on the dynamics of drones, and/or
 							it still makes small mistakes in estimating its relative positions to obstacles. Or it
 							could simply be that it does not care much about avoiding collisions, since this is a
-							simulator (nothing in the prompt asks it to avoid collisions at all costs, and sometimes in the scratchpad it says that walls are made of rubber).
+							simulator (nothing in the prompt asks it to avoid collisions at all costs).
 							However, we suspect that simply increasing inference speed or improving the prompt
 							could be a highly effective solution to this problem (we’ll come back to this later).
 						</p>
@@ -413,13 +413,13 @@
 							can correctly identify their fellow agents, despite the fact that they are all visually identical (Fig. 4).
 							For example, agent 2 at 0:10 sees another drone below itself and indicates seeing agent 3 in its personal scratchpad.
 							The most likely hypothesis is that agent 2 does so by matching what it sees to what
-							agent 3 has reported in the shared scratchpad.
+							agent 3 has reported in the shared scratchpad (see below).
 							This is quite impressive, as it indicates that Astra is capable of spatial perspective-taking <a href="#ref-4">[4]</a>. 
 						</p>
 
 						<figure>
 							<figcaption style="text-align: left; margin-bottom: 0.25em; font-family: 'Courier New';">
-								<b style="color: #f56a6a;">Shared scratchpad:</b>
+								<b style="color: #f56a6a;">Excerpts from the shared scratchpad:</b>
 							</figcaption>
 							<pre style="white-space: pre-wrap;"><code style="border-color: #f56a6a;">Agent 3, 6.65s: "Found second human TOP floor inside nearest balcony door on long facade: red shirt, pale trousers, prone near central column. Inspecting."
 Agent 2, 7.15s: "I entered upper broken corner past yellow/purple worker; proceeding straight inward toward red/white figure through rear doorway (may be your red shirt)."
