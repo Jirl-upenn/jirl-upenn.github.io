@@ -411,11 +411,21 @@
 							We make a few suprising finding by inspecting the shared scratchpad. First, we observe that agents share information
 							about where they locate humans in relation to landmarks (e.g., doors or windows). Second, they
 							can correctly identify their fellow agents, despite the fact that they are all visually identical (Fig. 4).
-							For example, Agent 3 at 0:10 sees another drone above itself and writes in the scratchpad: “I see agent 2 above me”.
-							The most likely hypothesis is that agent 3 does so by matching what it sees to what
-							agent 2 has reported in the shared scratchpad.
+							For example, agent 2 at 0:10 sees another drone below itself and indicates seeing agent 3 in its personal scratchpad.
+							The most likely hypothesis is that agent 2 does so by matching what it sees to what
+							agent 3 has reported in the shared scratchpad.
 							This is quite impressive, as it indicates that Astra is capable of spatial perspective-taking <a href="#ref-4">[4]</a>. 
 						</p>
+
+						<figure>
+							<figcaption style="text-align: left; margin-bottom: 0.25em; font-family: 'Courier New';">
+								<b style="color: #f56a6a;">Shared scratchpad:</b>
+							</figcaption>
+							<pre style="white-space: pre-wrap;"><code style="border-color: #f56a6a;">Agent 3, 6.65s: "Found second human TOP floor inside nearest balcony door on long facade: red shirt, pale trousers, prone near central column. Inspecting."
+Agent 2, 7.15s: "I entered upper broken corner past yellow/purple worker; proceeding straight inward toward red/white figure through rear doorway (may be your red shirt)."
+Agent 3, 7.15s: "Top-floor human confirmed: RED short-sleeve shirt with black markings, light gray trousers, gray shoes; brown hair/beard male, arms spread by column. Access first tall balcony door nearest solid end wall."
+Agent 3, 7.65s: "Agent2 red/white likely same red-shirt man I mapped; I will move along top floor toward far right end."</code></pre>
+						</figure>
 
 						<h3>Search Stage</h3>
 
