@@ -914,5 +914,24 @@ Agent 3, 7.65s: "Agent2 red/white likely same red-shirt man I mapped; I will mov
 		<script src="../assets/js/breakpoints.min.js"></script>
 		<script src="../assets/js/util.js"></script>
 		<script src="../assets/js/main.js"></script>
+		<script>
+			// Autoplay each (muted) video when scrolled into view; pause when it leaves.
+			document.querySelectorAll('video').forEach(function (v) {
+				v.muted = true;
+				v.loop = true;
+			});
+			var videoObserver = new IntersectionObserver(function (entries) {
+				entries.forEach(function (e) {
+					if (e.isIntersecting) {
+						e.target.play().catch(function () {});
+					} else {
+						e.target.pause();
+					}
+				});
+			}, { threshold: 0.5 });
+			document.querySelectorAll('video').forEach(function (v) {
+				videoObserver.observe(v);
+			});
+		</script>
 	</body>
 </html>
